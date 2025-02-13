@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EduMeet Activation Email</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 500px;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 20px auto;
+      }
+
+      /* Logo Box Styling */
+      .logo-box {
+        background-color: #1d1d1d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        padding-bottom: 15px;
+        border-radius: 10px;
+        gap: 10px;
+        max-width: 230px;
+        margin: 0 auto;
+        width: fit-content;
+        height: auto;
+      }
+
+      .logo {
+        height: 35px;
+        width: 35px;
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffb400;
+        text-align: center;
+        text-decoration: underline;
+        padding-top: 3px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .message {
+        font-size: 22px;
+        font-weight: bold;
+        color: #bfdc98;
+        margin: 15px 0;
+        padding-top: 10px;
+      }
+
+      .body {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .body p {
+        margin: 10px 0;
+      }
+
+      .highlight {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e84854;
+        text-align: center;
+      }
+
+      .support {
+        font-size: 14px;
+        color: #888;
+        margin-top: 25px;
+      }
+
+      .support a {
+        color: #a855f7;
+        text-decoration: none;
+      }
+
+      .support a:hover {
+        color: #d63384;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+
+        .logo-box {
+          flex-direction: row;
+          max-width: 100%;
+        }
+
+        .logo {
+          height: 30px;
+          width: 30px;
+        }
+
+        .logo-text {
+          font-size: 18px;
+        }
+
+        .message {
+          font-size: 20px;
+        }
+
+        .body {
+          font-size: 15px;
+        }
+
+        .highlight {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Logo Box -->
+      <div class="logo-box">
+        <a href="https://edumeet-project.vercel.app">
+          <img
+            class="logo"
+            src="https://raw.githubusercontent.com/Taniya23Y/EduMeet/refs/heads/main/00_frontend-edumeet/src/assets/edumeet-yellow-logo-removebg-preview.png"
+            alt="EduMeet Logo"
+          />
+        </a>
+        <h1 class="logo-text">EduMeet</h1>
+      </div>
+
+      <div class="message">EduMeet Activation Email</div>
+
+      <div class="body">
+        <p>Dear <%= user.name %>, 👋</p>
+        <p>
+          Thank you for registering with EduMeet. To activate your account,
+          please use the following Activation Code (One-Time Password) to verify
+          your account:
+        </p>
+        <h2 class="highlight"><%= activationCode %></h2>
+        <p>
+          This Activation Code is valid for 5 minutes. If you did not request
+          this verification, please disregard this email. Once your account is
+          verified, you will have access to our platform and its features. ✨
+        </p>
+      </div>
+
+      <div class="support">
+        If you have any questions or need assistance, please feel free to reach
+        out to us at
+        <a href="mailto:info@edumeet.com">info@edumeet.com</a>. We are here to
+        help! 😊
+      </div>
+    </div>
+  </body>
+</html>
