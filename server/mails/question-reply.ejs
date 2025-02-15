@@ -73,12 +73,15 @@
         </p>
 
         <div class="question">
-          <p>❓ <%= question %></p>
+          <p>❓ <%= question || 'No question available' %></p>
         </div>
 
         <div class="reply">
-          <p><strong><%= replierName %></strong> replied:</p>
-          <p>💬 <%= replyContent %></p>
+          <p>
+            <strong><%= replierName || 'No replierName available'%></strong>
+            replied:
+          </p>
+          <p>💬 <%= answer || 'No reply available'%></p>
         </div>
 
         <p>
