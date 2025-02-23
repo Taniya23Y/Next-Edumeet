@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-foreground text-[16px] tracking-[-0.03em] text-p5;
+    font-family: "Inter", "Poppins", sans-serif;
+  }
+}
+
+/******************************************/
+@layer components {
+  .sub-menu {
+    @apply absolute top-[4.2rem] p-[15px] rounded-[6px] origin-[50%_-170px] backdrop-blur bg-black;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
+  }
+  .faq-icon {
+    @apply before:absolute before:h-0.5 before:w-3 before:bg-[#000000] before:content-[''] after:absolute after:h-0.5 after:w-3 after:rotate-90 after:bg-[#1d1d1d] after:transition-all after:duration-500 after:content-[''];
+  }
+
+  .small-compact {
+    @apply text-[12px] font-semibold leading-[18px] tracking-[0.03em];
+  }
+
+  .card {
+    @apply bg-white p-10 border border-[#222222]/10 rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full;
+  }
+  .flex-center {
+    @apply flex items-center;
+  }
+  .flex-center-between {
+    @apply flex items-center justify-between;
+  }
+}
+
+/*********************/
+/* Custom scrollbar for mobile menu */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #1d1d1d;
+  border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #151515;
+}
+
+/*********************/
+.grid-background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grid-background::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.9));
+}
+
+.code-border {
+  background: linear-gradient(
+    111.93deg,
+    rgba(14, 26, 45, 0.24) -1.4%,
+    rgba(17, 30, 50, 0.38) 104.96%
+  );
+  border: 2px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right bottom, #ffffff38, #ffffff00);
+}
+
+.grad {
+  position: absolute;
+  width: 372.95px;
+  height: 257.05px;
+  left: calc(50% - 372.95px / 2 - 76.53px);
+  top: calc(50% - 257.05px / 2 - 47.47px);
+
+  /* Gradient/02 */
+
+  background: linear-gradient(
+    123.77deg,
+    #8a2be2 -6.46%,
+    #ffa500 59.04%,
+    #f8f8ff 124.53%
+  );
+  opacity: 0.2;
+  filter: blur(34px);
+  transform: matrix(1, 0, -0.03, 1, 0, 0);
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+}
+
+.about {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-bg {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 16px;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.glass-bg {
+  background: rgba(255, 255, 255, 0.15); /* Soft white with transparency */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Light gray border */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Subtle shadow using a neutral color */
+  backdrop-filter: blur(
+    12px
+  ); /* Slightly more blur for a stronger glass effect */
+  border-radius: 12px; /* Softer corners */
+}
+
+/* Dotted Line for Timeline Connection */
+.dotted-line {
+  border-left: 2px dotted rgba(156, 81, 224, 0.7); /* Light purple dotted line */
+}
+
+/***************** FAQ ***********************/
+.g5 {
+  background: linear-gradient(#36382c, #ed9209);
+}
+
+.g4 {
+  background: linear-gradient(#09dbe7, #a08d70);
+}
+
+/**************************************************/
+.videoDWrapper {
+  perspective: 1000px;
+}
+
+.videoD {
+  transform: rotateX(40deg) scale(1);
+  transition: transform 0.5s ease-out;
+  will-change: transform;
+}
+
+.videoD.scrolled {
+  transform: rotateX(0deg) scale(1) translateY(40px);
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animated Gradient Border */
+.bg-gradient-border {
+  background: linear-gradient(90deg, #ff00ff, #ff6600, #00ffff, #ff00ff);
+  background-size: 300% 300%;
+  animation: gradientAnimation 3s infinite linear;
+  mask: linear-gradient(black 0 0) content-box, linear-gradient(black 0 0);
+  -webkit-mask: linear-gradient(black 0 0) content-box,
+    linear-gradient(black 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  border-radius: 1rem;
+}
+
+/******************************************************/
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-2px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+/****************************/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
