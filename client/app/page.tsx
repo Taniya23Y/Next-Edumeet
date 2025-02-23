@@ -2,21 +2,25 @@
 
 import React, { FC, useState } from "react";
 import Heading from "./utils/Heading";
+import Header from "./components/Header";
+import Home from "./components/Route/Home";
 
-interface Props {}
+// interface Props {}
 
-const Page: FC<Props> = (props) => {
+const Page: FC = () => {
+  const [open, setOpen] = useState(false);
+  const [route, setRoute] = useState("Login");
+
   return (
-    <>
+    <div>
       <Heading
-        title="Edumeet"
-        description="Edumeet is a platform that provides structured coding courses from YouTube and other platforms, offering roadmaps, assignments, and hands-on projects to help learners master programming skills efficiently."
+        title="Edumeet | Learning Hub"
+        description="EduMeet organizes structured coding courses from YouTube and other resources, providing clear roadmaps and tailored assignments for efficient learning. 🚀"
         keywords="Edumeet, coding courses, programming tutorials, free coding resources, structured learning, YouTube coding, web development, DSA, MERN stack, JavaScript, Python, React, software development"
       />
-      <div>
-        <h1>Welcome to EduMeet</h1>
-      </div>
-    </>
+      <Header open={open} setOpen={setOpen} setRoute={setRoute} route={route} />
+      <Home />
+    </div>
   );
 };
 
