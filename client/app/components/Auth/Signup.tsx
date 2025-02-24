@@ -34,7 +34,7 @@ const Signup: FC<Props> = ({ setRoute }) => {
 
   useEffect(() => {
     if (isSuccess) {
-      const message = data.message || "Registration Successful";
+      const message = data?.message || "Registration Successful";
       toast.success(message);
       setRoute("Verification");
     }
@@ -67,7 +67,7 @@ const Signup: FC<Props> = ({ setRoute }) => {
   return (
     <div className="w-full">
       <h1 className={`${styles.title}`}>
-        Welcome To Edumeet <span className="text-green-400">Sign-Up</span>
+        Welcome To Edumeet <span className="text-green-400">Signup</span>
       </h1>
       <div className="">
         <form

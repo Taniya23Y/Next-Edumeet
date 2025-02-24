@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import student1 from "../../../../public/images/yellowImage.png";
 import student2 from "../../../../public/images/purpleImage.png";

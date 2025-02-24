@@ -106,7 +106,7 @@ const CustomModal: FC<Props> = ({
               <FaLongArrowAltLeft className="mr-1" />
               <p>Back</p>
             </div>
-            <div className="pt-[6rem] md:pt-0">
+            <div className="pt-[6rem] md:pt-[7rem]">
               <Component setOpen={setOpen} setRoute={setRoute} />
             </div>
           </Box>

@@ -1,3 +1,5 @@
+"use client";
+
 import { Element } from "react-scroll";
 import logo from "../../../../public/images/edumeet-yellow-logo-removebg-preview.png";
 import Image from "next/image";
