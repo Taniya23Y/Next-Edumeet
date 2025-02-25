@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="container w-full h-full relative mx-auto flex flex-col items-center justify-between select-none">
+    <div className="container bg-[#0A0A0A] w-full h-full relative mx-auto flex flex-col items-center justify-between select-none">
       <Link href="/signup" />
 
       {/* Hero | section - 1  */}

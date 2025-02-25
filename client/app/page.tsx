@@ -12,7 +12,7 @@ const Page: FC = () => {
   const [route, setRoute] = useState("Login");
 
   return (
-    <div>
+    <div className="bg-[#0A0A0A]">
       <Heading
         title="Edumeet | Learning Hub"
         description="EduMeet organizes structured coding courses from YouTube and other resources, providing clear roadmaps and tailored assignments for efficient learning. 🚀"

@@ -16,7 +16,10 @@ import SignUp from "../components/Auth/Signup";
 import Verification from "../components/Auth/Verification";
 import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
-import { useSocialAuthMutation } from "@/redux/features/auth/authApi";
+import {
+  useLogoutQuery,
+  useSocialAuthMutation,
+} from "@/redux/features/auth/authApi";
 import toast from "react-hot-toast";
 
 type Props = {
@@ -31,22 +34,10 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
   const { user } = useSelector((state: any) => state.auth);
   const { data } = useSession();
   const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
-
-  // useEffect(() => {
-  //   if (!user) {
-  //     if (data) {
-  //       socialAuth({
-  //         email: data?.user?.email,
-  //         name: data?.user?.name,
-  //         avatar: data?.user?.image,
-  //       });
-  //     }
-  //   }
-  //   if (isSuccess) {
-  //     toast.success("Login Successfully!");
-  //     console.log(error);
-  //   }
-  // }, [data, user]);
+  const [logout, setLogout] = useState(false);
+  const {} = useLogoutQuery(undefined, {
+    skip: !logout ? true : false,
+  });
 
   useEffect(() => {
     if (!user && data) {
@@ -57,12 +48,18 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
       });
     }
 
-    if (isSuccess) {
-      const hasLoggedIn = sessionStorage.getItem("loggedIn");
-      if (!hasLoggedIn) {
-        toast.success("Login Successfully!");
-        sessionStorage.setItem("loggedIn", "true"); // Prevent future triggers
+    if (data === null) {
+      if (isSuccess) {
+        const hasLoggedIn = sessionStorage.getItem("loggedIn");
+        if (!hasLoggedIn) {
+          toast.success("Login Successfully!");
+          sessionStorage.setItem("loggedIn", "true"); // Prevent future triggers
+        }
       }
+    }
+
+    if (data === null) {
+      setLogout(true);
     }
 
     if (error) {
@@ -101,8 +98,7 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
               <div className="border-[1.5px] border-yellow rounded-full w-9 h-9 flex items-center justify-center">
                 <Link href="/profile">
                   <Image
-                    // src={user.avatar ? user.avatar?.url : avatar}
-                    src={user.avatar?.url || data?.user?.image || avatar}
+                    src={user.avatar.url || data?.user?.image || avatar}
                     alt="user"
                     width={40}
                     height={40}

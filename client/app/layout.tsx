@@ -6,6 +6,10 @@ import { Inter, Poppins, Josefin_Sans } from "next/font/google";
 import Cursor from "./UI/Cursor";
 import { Providers } from "./Provider";
 import { SessionProvider } from "next-auth/react";
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
+import Loader from "./components/Loader/Loader";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -48,10 +52,26 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             <Cursor />
-            {children}
+            <Toaster position="top-right" reverseOrder={false} />
+            <Custom>{children}</Custom>
           </SessionProvider>
         </Providers>
       </body>
     </html>
   );
 }
+
+const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { isLoading } = useLoadUserQuery({});
+  const [showContent, setShowContent] = useState(false);
+
+  return (
+    <>
+      {isLoading || !showContent ? (
+        <Loader onComplete={() => setShowContent(true)} />
+      ) : (
+        children
+      )}
+    </>
+  );
+};
