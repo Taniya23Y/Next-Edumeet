@@ -90,8 +90,8 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
           <Image
             src={logo}
             alt="EduMeet Logo"
-            width={200}
-            height={200}
+            width={100}
+            height={100}
             style={{ width: "auto", height: "auto" }}
             priority
           />

@@ -5,17 +5,21 @@ import { styles } from "@/app/styles/style";
 import { useUpdatePasswordMutation } from "@/redux/features/user/userApi";
 import React, { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const ChangePassword: FC = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [updatePassword, { isSuccess, error }] = useUpdatePasswordMutation();
 
   const passwordChangeHandler = async (e: any) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      toast.error("password do not Match!");
+      toast.error("Passwords do not match!");
     } else {
       await updatePassword({ oldPassword, newPassword });
     }
@@ -23,7 +27,7 @@ const ChangePassword: FC = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Password changed Successfully");
+      toast.success("Password changed successfully");
     }
 
     if (error) {
@@ -45,47 +49,92 @@ const ChangePassword: FC = () => {
             onSubmit={passwordChangeHandler}
             className="flex flex-col items-center"
           >
-            <div className="w-[100%] 800px:w-[60%] mt-5">
-              <label className="block pb-2">Enter Your Old Password</label>
-              <input
-                type="password"
-                className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0`}
-                required
-                placeholder="old password"
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
-              />
+            {/* Old Password */}
+            <div className="w-[100%] 800px:w-[60%] mt-5 relative">
+              <label className="block pb-2">
+                <p className={`${styles.p}`}>
+                  Enter Your Old Password <sup className="text-pink-200">*</sup>
+                </p>
+                <input
+                  type={showOldPassword ? "text" : "password"}
+                  className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0`}
+                  required
+                  placeholder="Old password"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+                <span
+                  onClick={() => setShowOldPassword((prev) => !prev)}
+                  className="absolute right-7 top-[38px] cursor-pointer"
+                >
+                  {showOldPassword ? (
+                    <AiOutlineEye fontSize={21} fill="#AFB2BF" />
+                  ) : (
+                    <AiOutlineEyeInvisible fontSize={21} fill="#AFB2BF" />
+                  )}
+                </span>
+              </label>
             </div>
 
-            <div className="w-[100%] 800px:w-[60%] mt-2">
-              <label className="block pb-2">Enter Your New Password</label>
-              <input
-                type="password"
-                placeholder="new password"
-                className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0 text-white`}
-                required
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
+            {/* New Password */}
+            <div className="w-[100%] 800px:w-[60%] mt-2 relative">
+              <label className="block pb-2">
+                <p className={`${styles.p}`}>
+                  Enter Your New Password <sup className="text-pink-200">*</sup>
+                </p>
+                <input
+                  type={showNewPassword ? "text" : "password"}
+                  className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0 text-white`}
+                  required
+                  placeholder="New password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <span
+                  onClick={() => setShowNewPassword((prev) => !prev)}
+                  className="absolute right-7 top-[38px] cursor-pointer"
+                >
+                  {showNewPassword ? (
+                    <AiOutlineEye fontSize={21} fill="#AFB2BF" />
+                  ) : (
+                    <AiOutlineEyeInvisible fontSize={21} fill="#AFB2BF" />
+                  )}
+                </span>
+              </label>
             </div>
 
-            <div className="w-[100%] 800px:w-[60%] mt-2">
-              <label className="block pb-2">Enter Your Confirm Password</label>
-              <input
-                type="password"
-                placeholder="confirm password"
-                className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0 text-white`}
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-              <input
-                className={`w-[50%] 800px:w-[150px] h-[40px] border border-yellow bg-yellow text-center text-black font-semibold rounded-[10px]  cursor-pointer`}
-                required
-                value="Update"
-                type="submit"
-              />
+            {/* Confirm Password */}
+            <div className="w-[100%] 800px:w-[60%] mt-2 relative">
+              <label className="block pb-2">
+                <p className={`${styles.p}`}>
+                  Confirm Your Password <sup className="text-pink-200">*</sup>
+                </p>
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  className={`${styles.inputs} !w-[95%] mb-4 800px:mp-0 text-white`}
+                  required
+                  placeholder="Confirm password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <span
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  className="absolute right-7 top-[38px] cursor-pointer"
+                >
+                  {showConfirmPassword ? (
+                    <AiOutlineEye fontSize={21} fill="#AFB2BF" />
+                  ) : (
+                    <AiOutlineEyeInvisible fontSize={21} fill="#AFB2BF" />
+                  )}
+                </span>
+              </label>
             </div>
+
+            <input
+              className="w-[50%] 800px:w-[150px] h-[40px] border border-yellow bg-yellow text-center text-black font-semibold rounded-[10px] cursor-pointer"
+              type="submit"
+              value="Update"
+            />
           </form>
         </div>
       </div>

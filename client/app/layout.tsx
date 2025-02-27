@@ -3,7 +3,7 @@
 // import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Poppins, Josefin_Sans } from "next/font/google";
-import Cursor from "./UI/Cursor";
+// import Cursor from "./UI/Cursor";
 import { Providers } from "./Provider";
 import { SessionProvider } from "next-auth/react";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
@@ -51,7 +51,7 @@ export default function RootLayout({
       >
         <Providers>
           <SessionProvider>
-            <Cursor />
+            {/* <Cursor /> */}
             <Toaster position="top-right" reverseOrder={false} />
             <Custom>{children}</Custom>
           </SessionProvider>
