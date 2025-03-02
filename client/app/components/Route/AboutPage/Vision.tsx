@@ -1,3 +1,5 @@
+"use client";
+
 import { FaBook, FaBullseye, FaTrophy, FaUsers } from "react-icons/fa";
 import VisionBtn from "../../../UI/VisionBtn";
 import { motion } from "framer-motion";

@@ -6,7 +6,7 @@ import student2 from "../../../../public/images/purpleImage.png";
 import student3 from "../../../../public/images/redImage.png";
 import student4 from "../../../../public/images/greenImage.png";
 import student5 from "../../../../public/images/blueImage.png";
-import student6 from "../../../../public/grayGreenImage.png";
+import student6 from "../../../../public/images/grayGreenImage.png";
 
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { motion } from "framer-motion";

@@ -17,9 +17,9 @@ export const authApi = apiSlice.injectEndpoints({
         url: "registration",
         method: "POST",
         body: data,
-        Credential: "include" as const,
+        credentials: "include" as const,
       }),
-      async onQueryStarted(args, { queryFulfilled, dispatch }) {
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
           dispatch(
@@ -101,7 +101,7 @@ export const authApi = apiSlice.injectEndpoints({
         method: "GET",
         credentials: "include" as const,
       }),
-      async onQueryStarted({ dispatch }) {
+      async onQueryStarted(args, { dispatch }) {
         try {
           dispatch(userLoggedOut());
         } catch (error) {

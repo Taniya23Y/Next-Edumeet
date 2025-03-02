@@ -1,5 +1,5 @@
 import { FaBook, FaBullseye, FaUsers, FaTrophy } from "react-icons/fa";
-import grainImage from "../../../../../public/images/grainImage.jpg";
+import grainImage from "../../../../public/images/grainImage.jpg";
 import { JSX } from "react";
 
 interface Feature {

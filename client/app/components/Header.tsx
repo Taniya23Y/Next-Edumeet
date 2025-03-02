@@ -98,7 +98,7 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
               <div className="border-[1.5px] border-yellow rounded-full w-9 h-9 flex items-center justify-center">
                 <Link href="/profile">
                   <Image
-                    src={user.avatar.url || data?.user?.image || avatar}
+                    src={user?.avatar?.url || data?.user?.image || avatar}
                     alt="user"
                     width={40}
                     height={40}

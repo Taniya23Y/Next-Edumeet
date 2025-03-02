@@ -1,10 +1,10 @@
 import Button from "../../../UI/Btn";
-import aboutImage1 from "../../../../../public/images/aboutImage1.jpg";
-import aboutImage2 from "../../../../../public/images/aboutImage2.jpg";
-import aboutImage3 from "../../../../../public/images/aboutImage3.jpg";
-import aboutImage4 from "../../../../../public/images/aboutImage4.jpg";
-import aboutImage5 from "../../../../../public/images/aboutImage5.jpg";
-import aboutImage6 from "../../../../../public/images/aboutImage6.jpg";
+import aboutImage1 from "../../../../public/images/aboutImage1.jpg";
+import aboutImage2 from "../../../../public/images/aboutImage2.jpg";
+import aboutImage3 from "../../../../public/images/aboutImage3.jpg";
+import aboutImage4 from "../../../../public/images/aboutImage4.jpg";
+import aboutImage5 from "../../../../public/images/aboutImage5.jpg";
+import aboutImage6 from "../../../../public/images/aboutImage6.jpg";
 import { FaArrowRight } from "react-icons/fa";
 import Image from "next/image";
 import HighlightText from "../../../UI/HighlightText";

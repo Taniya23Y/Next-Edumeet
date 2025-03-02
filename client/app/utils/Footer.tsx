@@ -37,33 +37,41 @@ const legalLinks = [
     id: 1,
     icon: <LucideGoal size={16} />,
     label: "Privacy Policy",
-    url: "/privacy-policy",
+    url: "/policy/privacy-link",
   },
   {
     id: 2,
     icon: <TerminalSquare size={16} />,
     label: "Terms of Service",
-    url: "/terms",
+    url: "/policy/terms",
   },
   {
     id: 3,
     icon: <CookieIcon size={16} />,
     label: "Cookie Policy",
-    url: "/cookie-policy",
+    url: "/policy/cookie-policy",
   },
   {
     id: 4,
     icon: <CopyrightIcon size={16} />,
     label: "Copyright Notice",
-    url: "/copyright-notice",
+    url: "/policy/copyright-notice",
   },
 ];
 
 const socialLinks = [
-  { id: 1, icon: <FaGithub size={21} />, url: "https://www.github.com" },
+  {
+    id: 1,
+    icon: <FaGithub size={21} />,
+    url: "https://www.github.com/Taniya23Y",
+  },
   { id: 2, icon: <FaTwitter size={21} />, url: "https://x.com" },
   { id: 3, icon: <FaInstagram size={21} />, url: "https://www.instagram.com" },
-  { id: 4, icon: <FaLinkedin size={21} />, url: "https://www.linkedin.com" },
+  {
+    id: 4,
+    icon: <FaLinkedin size={21} />,
+    url: "https://www.linkedin.com/taniay",
+  },
 ];
 
 const Footer: React.FC = () => {
@@ -86,14 +94,14 @@ const Footer: React.FC = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 text-emerald-500">
+          <h3 className="text-lg font-semibold mb-4 text-[#C691FC]">
             Quick Links
           </h3>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.id} className="flex items-center space-x-2">
                 {link.icon}
-                <a href={link.url} className="hover:text-yellow">
+                <a href={link.url} className="hover:text-[#C691FC]">
                   {link.label}
                 </a>
               </li>
@@ -103,14 +111,14 @@ const Footer: React.FC = () => {
 
         {/* Legal Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-4  text-emerald-500">
+          <h3 className="text-lg font-semibold mb-4  text-[#C691FC]">
             Legal Links
           </h3>
           <ul className="space-y-2">
             {legalLinks.map((link) => (
               <li key={link.id} className="flex items-center space-x-2">
                 {link.icon}
-                <a href={link.url} className="hover:text-yellow">
+                <a href={link.url} className="hover:text-[#C691FC]">
                   {link.label}
                 </a>
               </li>
@@ -129,7 +137,7 @@ const Footer: React.FC = () => {
                 <a
                   key={social.id}
                   href={social.url}
-                  className="hover:text-yellow"
+                  className="hover:text-emerald-500"
                 >
                   {social.icon}
                 </a>

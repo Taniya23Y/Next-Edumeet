@@ -42,7 +42,12 @@ courseRouter.get(
   authorizeRoles("admin"),
   getAdminAllCourses
 );
-courseRouter.get("/get-course-content/:id", isAuthenticated, getCourseByUser);
+courseRouter.get(
+  "/get-course-content/:id",
+  updateAccessToken,
+  isAuthenticated,
+  getCourseByUser
+);
 
 courseRouter.put(
   "/add-question",
