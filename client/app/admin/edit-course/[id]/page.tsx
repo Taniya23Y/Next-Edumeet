@@ -1,13 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React from "react";
-import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
-import Heading from "../../utils/Heading";
-import CreateCourse from "../../components/Admin/Course/CreateCourse";
-import DashboardHeader from "../../components/Admin/dashboard/DashboardHeader";
+import AdminSidebar from "../../../components/Admin/sidebar/AdminSidebar";
+import Heading from "../../../utils/Heading";
+import EditCourse from "../../../components/Admin/Course/EditCourse";
+import DashboardHeader from "../../../components/Admin/dashboard/DashboardHeader";
 import AdminProtected from "@/app/hooks/adminProtected";
 
-const page = () => {
+const page = ({ params }: any) => {
+  const id = params?.id;
+
   return (
     <div>
       <AdminProtected>
@@ -22,7 +25,7 @@ const page = () => {
           </div>
           <div className="w-[85%]">
             <DashboardHeader />
-            <CreateCourse />
+            <EditCourse id={id} />
           </div>
         </div>
       </AdminProtected>

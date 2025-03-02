@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -43,7 +44,7 @@ const Item: FC<itemProps> = ({ title, to, icon, selected, setSelected }) => {
       onClick={() => setSelected(title)}
       icon={icon}
     >
-      <Typography className="!text-[14px] !font-Josefin_Sans">
+      <Typography className="!text-[17px] !font-Josefin_Sans">
         {title}
       </Typography>
       <Link href={to} />
@@ -73,7 +74,7 @@ const Sidebar = () => {
       sx={{
         "& .pro-sidebar-inner": {
           backgroundColor: "#1d1d1d !important",
-          borderRadius: "20px",
+          borderRadius: "8px",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -85,7 +86,11 @@ const Sidebar = () => {
           color: "#C8EA80 !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 35px 2px 1px !important",
+          padding: "1px 25px 8px 25px !important",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
           opacity: 1,
         },
       }}
@@ -94,13 +99,13 @@ const Sidebar = () => {
         collapsed={isCollapsed}
         style={{
           position: "fixed",
-          top: "10px",
-          left: "7px",
-          height: "calc(100vh - 20px)",
-          width: isCollapsed ? "0%" : "16%",
-          borderRadius: "12px",
-          padding: "10px",
-          backgroundColor: "#1d1d1d",
+          top: "0px",
+          left: "0px",
+          height: "calc(100vh - 1px)",
+          width: isCollapsed ? "0%" : "14%",
+          borderRadius: "8px",
+          padding: "8px",
+          // backgroundColor: "#1d1d1d",
         }}
       >
         <Menu iconShape="square">
@@ -108,7 +113,7 @@ const Sidebar = () => {
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <ArrowForwardIosIcon /> : undefined}
-            style={{ margin: "10px 0 20px 0" }}
+            style={{ margin: "1px 0 0 0" }}
           >
             {!isCollapsed && (
               <Box
@@ -164,7 +169,7 @@ const Sidebar = () => {
           )}
 
           {/* Menu Items */}
-          <Box paddingLeft={isCollapsed ? undefined : "10%"}>
+          <Box paddingLeft={isCollapsed ? undefined : "7%"}>
             <Item
               title="Dashboard"
               to="/admin"
@@ -176,7 +181,7 @@ const Sidebar = () => {
             {/* Data Section */}
             <Typography
               variant="h5"
-              className="!text-[20px] text-[#C78EEC]  capitalize !font-[400]"
+              className="!text-[20px] text-[#C78EEC] capitalize !font-[400]"
               sx={{ m: "15px 0 5px 5px" }}
             >
               {!isCollapsed && "Data"}

@@ -4,6 +4,7 @@ import React, { FC, useState } from "react";
 import Heading from "./utils/Heading";
 import Header from "./components/Header";
 import Home from "./components/Route/Home";
+import Footer from "./utils/Footer";
 
 // interface Props {}
 
@@ -20,6 +21,7 @@ const Page: FC = () => {
       />
       <Header open={open} setOpen={setOpen} setRoute={setRoute} route={route} />
       <Home />
+      <Footer />
     </div>
   );
 };

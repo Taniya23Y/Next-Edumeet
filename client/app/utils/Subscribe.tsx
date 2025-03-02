@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const Subscribe = () => {
   const [email, setEmail] = useState("");
@@ -42,8 +42,6 @@ const Subscribe = () => {
             </button>
           </div>
         </div>
-
-        <Toaster position="top-center" />
       </div>
     </section>
   );
