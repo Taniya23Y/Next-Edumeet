@@ -64,6 +64,12 @@ body {
   .flex-center-between {
     @apply flex items-center justify-between;
   }
+  .gradient {
+    @apply bg-gradient-to-b from-[#f1e061] via-gray-200 to-yellow;
+  }
+  .gradient-title {
+    @apply gradient font-extrabold tracking-tighter text-transparent bg-clip-text pb-2 pr-2;
+  }
 }
 
 /*********************/
@@ -110,7 +116,22 @@ input[type="number"] {
 }
 
 /*********************/
+.hero-image-wrapper {
+  perspective: 1000px;
+}
+
+.hero-image {
+  transform: rotateX(20deg) scale(1);
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.hero-image.scrolled {
+  transform: rotateX(0deg) scale(1) translateY(40px);
+}
+
 .grid-background {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -123,18 +144,21 @@ input[type="number"] {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  opacity: 0.6;
 }
 
 .grid-background::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.9));
 }
+
+/*****************************************/
 
 .code-border {
   background: linear-gradient(

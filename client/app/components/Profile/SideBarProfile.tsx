@@ -36,7 +36,7 @@ const SideBarProfile: FC<Props> = ({
           width={100}
           height={100}
           alt="useravatar"
-          className="w-[20px] h-[20px] 800px:w-[30px] 800px:h-[30px] border border-yellow bg-white object-contain cursor-pointer rounded-full"
+          className="w-[20px] h-[20px] 800px:w-[30px] 800px:h-[30px] border border-yellow object-cover cursor-pointer rounded-full"
         />
         <h5 className="pl-2 800px:block hidden font-Poppins text-black">
           My Account

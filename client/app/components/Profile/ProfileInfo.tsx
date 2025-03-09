@@ -78,9 +78,10 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
           <Image
             src={user.avatar || avatar ? user.avatar.url || avatar : avatarIcon}
             alt="user avatar"
-            width={100}
+            width={100} // Increased for HD clarity
             height={100}
-            className="w-[80px] h-[80px] cursor-pointer border-[0.2px] bg-yellow border-yellow rounded-full object-contain"
+            quality={100} // Ensures HD rendering
+            className="w-[80px] h-[80px] rounded-full border-[2px] border-yellow object-cover select-none pointer-events-none"
           />
           <input
             type="file"

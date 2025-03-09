@@ -5,6 +5,7 @@ import AdminProtected from "../../hooks/adminProtected";
 import Heading from "../../utils/Heading";
 import AdminSidebar from "../../components/Admin/sidebar/AdminSidebar";
 import DashboardHero from "../../components/Admin/dashboard/DashboardHero";
+import EditFaq from "@/app/components/Admin/customization/EditFaq";
 
 const page = () => {
   return (
@@ -21,6 +22,7 @@ const page = () => {
           </div>
           <div className="w-[85%]">
             <DashboardHero />
+            <EditFaq />
           </div>
         </div>
       </AdminProtected>

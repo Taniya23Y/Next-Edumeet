@@ -44,7 +44,7 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ ctabtn1 }) => {
           <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center gap-10 px-6">
             {/* Text Section */}
             <div className="lg:w-1/2 text-center lg:text-left space-y-6">
-              <h1 className="text-white text-5xl font-bold">
+              <h1 className="text-white text-6xl font-bold">
                 We Help People With their <br />
                 <HighlightText text={"Right course "} />
               </h1>

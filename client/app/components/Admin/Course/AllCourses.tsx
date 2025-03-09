@@ -11,17 +11,16 @@ import {
   useDeleteCourseMutation,
   useGetAllCoursesQuery,
 } from "@/redux/features/courses/coursesApi";
-import Loader from "../../Loader/Loader";
 import { format } from "timeago.js";
 import { styles } from "@/app/styles/style";
 import toast from "react-hot-toast";
+import LoaderOne from "../../Loader/LoaderOne";
 
 const AllCourses = () => {
   const { isLoading, data, refetch } = useGetAllCoursesQuery(
     {},
     { refetchOnMountOrArgChange: true }
   );
-  const [showContent, setShowContent] = useState(false);
   const [open, setOpen] = useState(false);
   const [courseId, setCourseId] = useState("");
   const [deleteCourse, { isSuccess, error }] = useDeleteCourseMutation({});
@@ -87,8 +86,8 @@ const AllCourses = () => {
           level: item.level,
           demoUrl: item.demoUrl,
           purchased: item.purchased,
-          benefits: item.benefits.length,
-          prerequisites: item.prerequisites.length,
+          benefits: item.benefits?.length,
+          prerequisites: item.prerequisites?.length,
           price: item.price,
           created_at: format(item.createdAt),
           updated_at: format(item.updatedAt),
@@ -117,8 +116,8 @@ const AllCourses = () => {
 
   return (
     <div className="mt-[90px]">
-      {isLoading || !showContent ? (
-        <Loader onComplete={() => setShowContent(true)} />
+      {isLoading ? (
+        <LoaderOne />
       ) : (
         <Box m="20px">
           <Box

@@ -10,6 +10,7 @@ import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import Loader from "./components/Loader/Loader";
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
+// import LoaderOne from "./components/Loader/LoaderOne";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -74,4 +75,6 @@ const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       )}
     </>
   );
+
+  // return <>{isLoading ? <LoaderOne /> : <div>{children}</div>}</>;
 };

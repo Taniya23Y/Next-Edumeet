@@ -6,7 +6,6 @@ import React, { FC, useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button, Modal } from "@mui/material";
 import { AiOutlineDelete } from "react-icons/ai";
-import Loader from "../../Loader/Loader";
 import { format } from "timeago.js";
 import {
   useGetAllUsersQuery,
@@ -16,6 +15,7 @@ import {
 import { MdMarkEmailRead } from "react-icons/md";
 import toast from "react-hot-toast";
 import { styles } from "@/app/styles/style";
+import LoaderOne from "../../Loader/LoaderOne";
 
 type Props = {
   isTeam: boolean;
@@ -26,7 +26,6 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
     {},
     { refetchOnMountOrArgChange: true }
   );
-  const [showContent, setShowContent] = useState(false);
   const [active, setActive] = useState(false);
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("admin");
@@ -150,8 +149,8 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
 
   return (
     <div className="mt-[90px]">
-      {isLoading || !showContent ? (
-        <Loader onComplete={() => setShowContent(true)} />
+      {isLoading ? (
+        <LoaderOne />
       ) : (
         <Box m="20px">
           {isTeam && (
@@ -233,7 +232,7 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
                     placeholder="Enter Your Email..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className={`${styles.inputs} bg-[#000]`}
+                    className={`${styles.inputs} !bg-[#000]`}
                   />
                   <br />
 
@@ -241,7 +240,7 @@ const AllUsers: FC<Props> = ({ isTeam }) => {
                   <select
                     name=""
                     id=""
-                    className={`${styles.inputs} bg-[#000]`}
+                    className={`${styles.inputs} !bg-[#000]`}
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
                   >

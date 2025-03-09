@@ -11,11 +11,11 @@ import notificationRoute from "./routes/notification.route";
 import analyticsRouter from "./routes/analytics.route";
 import layoutRouter from "./routes/layout.route";
 
-// body parser
-app.use(express.json({ limit: "50mb" }));
-
 // cookie-parser
 app.use(cookieParser());
+
+// body parser
+app.use(express.json({ limit: "50mb" }));
 
 // cors => cross origin resource sharing
 app.use(
@@ -26,7 +26,7 @@ app.use(
 );
 
 // routes
-// app.use("/api/v1", userRouter, courseRouter, orderRouter);
+// app.use("/api/v1", userRouter, courseRouter, orderRouter, notificationRoute, analyticsRouter, layoutRouter);
 app.use("/api/v1", userRouter);
 app.use("/api/v1", courseRouter);
 app.use("/api/v1", orderRouter);

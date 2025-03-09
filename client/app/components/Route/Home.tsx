@@ -30,8 +30,8 @@ const Home: React.FC = () => {
         <Hero onDemoClick={scrollToVideo} />
       </div>
 
-      {/* Video | section - 2  */}
-      <div ref={videoRef} className=" ">
+      {/* Video | section - 2.1  */}
+      <div ref={videoRef} className="pt-6">
         <Video />
       </div>
 
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* FAQ | section - 9  */}
-      <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         <h2 className="text-center text-4xl font-semibold mt-0">
           <HighlightText text="Discover More with Our FAQ Section" />
         </h2>
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
 
       {/* TestimonialReview | section - 10  */}
 
-      {/* <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      {/* <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         <h2 className="text-center text-4xl font-semibold mt-10 pt-9">
           <HighlightText text="User Testimonials" />
         </h2>
@@ -165,8 +165,8 @@ const Home: React.FC = () => {
 
       {/* Subscribe | section - 11  */}
 
-      <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
-        <h2 className="text-center text-4xl font-semibold mt-10 pt-9">
+      <div className="w-11/12 pt-[1rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+        <h2 className="text-center text-4xl font-semibold mt-10">
           <HighlightText text="Subscribe to Newsletter ✨" />
         </h2>
         <div className="pt-4">

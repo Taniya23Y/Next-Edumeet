@@ -100,9 +100,9 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
                   <Image
                     src={user?.avatar?.url || data?.user?.image || avatar}
                     alt="user"
-                    width={40}
-                    height={40}
-                    className="rounded-full cursor-pointer bg-yellow object-contain"
+                    width={100}
+                    height={100}
+                    className="w-[30px] h-[30px] rounded-full cursor-pointer object-cover"
                   />
                 </Link>
               </div>

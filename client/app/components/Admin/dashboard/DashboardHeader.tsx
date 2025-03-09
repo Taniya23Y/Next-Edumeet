@@ -1,10 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 
-const DashboardHeader: FC = () => {
-  const [open, setOpen] = useState(false);
+type Props = {
+  open?: boolean;
+  setOpen?: any;
+};
+
+const DashboardHeader: FC<Props> = ({ open, setOpen }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside

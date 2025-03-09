@@ -252,8 +252,8 @@ export const updateAccessToken = catchAsyncError(
 export const getUserInfo = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const userId = req.user?._id as string;
-      getUserById(userId, res);
+      const userId = req.user?._id;
+      getUserById(userId as string, res);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }
@@ -325,8 +325,8 @@ export const updateUserInfo = catchAsyncError(
 
 // update user password
 interface IUpdatePassword {
-  oldPassword?: string;
-  newPassword?: string;
+  oldPassword: string;
+  newPassword: string;
 }
 
 export const updatePassword = catchAsyncError(
@@ -370,11 +370,11 @@ interface IUpdateProfilePicture {
 export const updateProfilePicture = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { avatar } = req.body;
+      const { avatar } = req.body as IUpdateProfilePicture;
 
       const userId = req.user?._id;
 
-      const user = await userModel.findById(userId);
+      const user = await userModel.findById(userId).select("+password");
 
       if (avatar && user) {
         // if user has a avatar then call this if
@@ -473,6 +473,7 @@ export const deleteUser = catchAsyncError(
       await user.deleteOne({ id });
 
       await redis.del(id);
+
       res.status(200).json({
         success: true,
         message: "User Deleted Successfully!",

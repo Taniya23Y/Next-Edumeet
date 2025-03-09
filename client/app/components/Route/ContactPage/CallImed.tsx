@@ -25,7 +25,7 @@ const ContactInfo: React.FC<ContactInfoProps> = ({
 
 const CallImed: React.FC = () => {
   return (
-    <div className="flex flex-col gap-6 rounded-xl bg-richblack-800 p-4 lg:p-6">
+    <div className="flex flex-col gap-6 rounded-xl p-4 lg:p-6">
       <ContactInfo
         icon={
           <svg

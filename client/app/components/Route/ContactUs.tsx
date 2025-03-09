@@ -46,7 +46,7 @@ const ContactUs: React.FC = () => {
       </section>
 
       {/* FAQ | section - 4 */}
-      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8  text-white">
         <h2 className="text-center text-4xl font-semibold mt-12 pt-12">
           <HighlightText text="Discover More with Our FAQ Section" />
         </h2>
@@ -65,8 +65,8 @@ const ContactUs: React.FC = () => {
       </div> */}
 
       {/* Newsletter - section - 6 */}
-      <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
-        <h2 className="text-center text-4xl font-semibold mt-10 pt-9">
+      <div className="w-11/12 pt-[1rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8  text-white">
+        <h2 className="text-center text-4xl font-semibold mt-10">
           <HighlightText text="Subscribe to Newsletter ✨" />
         </h2>
         <div className="pt-4">

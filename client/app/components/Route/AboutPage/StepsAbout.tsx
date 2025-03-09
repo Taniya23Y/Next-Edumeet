@@ -11,7 +11,7 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    icon: <FaBook className="text-[#ECBB9D] text-3xl" />,
+    icon: <FaBook className="text-[#9bea79] text-3xl" />,
     title: "Quality Learning Resources",
     description: "Access curated coding courses and study materials.",
     bg: "from-[#8DFDC2] to-yellow-800/20",

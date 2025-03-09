@@ -86,7 +86,7 @@ const Sidebar = () => {
           color: "#C8EA80 !important",
         },
         "& .pro-inner-item": {
-          padding: "1px 25px 8px 25px !important",
+          padding: "1px 25px 12px 25px !important",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -104,7 +104,7 @@ const Sidebar = () => {
           height: "calc(100vh - 1px)",
           width: isCollapsed ? "0%" : "14%",
           borderRadius: "8px",
-          padding: "8px",
+          padding: "3px",
           // backgroundColor: "#1d1d1d",
         }}
       >
@@ -250,7 +250,7 @@ const Sidebar = () => {
             />
             <Item
               title="Categories"
-              to="/admin/Categories"
+              to="/admin/categories"
               icon={<WysiwygIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -281,6 +281,13 @@ const Sidebar = () => {
               {!isCollapsed && "Analytics"}
             </Typography>
             <Item
+              title="Users Analytics"
+              to="/admin/users-analytics"
+              icon={<ManageHistoryIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Courses Analytics"
               to="/admin/courses-analytics"
               icon={<BarCharOutlinedIcon />}
@@ -291,13 +298,6 @@ const Sidebar = () => {
               title="Order Analytics"
               to="/admin/orders-analytics"
               icon={<MapOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            <Item
-              title="Users Analytics"
-              to="/admin/users-analytics"
-              icon={<ManageHistoryIcon />}
               selected={selected}
               setSelected={setSelected}
             />
