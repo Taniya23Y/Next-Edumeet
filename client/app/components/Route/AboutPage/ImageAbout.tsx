@@ -31,18 +31,13 @@ const ImageAbout: React.FC = () => {
         <div className="relative w-screen h-screen">
           <div className="space-y-6 mx-auto">
             <h1 className="text-3xl md:text-[2.7rem] text-center font-bold gradient-title animate-gradient p-3">
-              EduMeet: Empowering Your Learning
               {data?.layout?.banner?.firstTitle}
             </h1>
             <h1 className="text-3xl md:text-[2.7rem] text-center font-bold gradient-title animate-gradient p-3">
-              Navigate Your Coding Journey with Ease
               {data?.layout?.banner?.midTitle}
             </h1>
 
             <p className="mx-auto text-center pb-16 max-w-[600px] text-muted-foreground md:text-xl">
-              Access structured roadmaps, free coding courses, and tailored
-              assignments to enhance your skills. Learn efficiently and stay
-              ahead with EduMeet!
               {data?.layout?.banner?.lastTitle}
             </p>
           </div>
@@ -57,7 +52,8 @@ const ImageAbout: React.FC = () => {
               }`}
             >
               <Image
-                src={data?.layout?.banner?.image?.url || ImageHero}
+                src={ImageHero}
+                // src={data?.layout?.banner?.image?.url}
                 width={1100}
                 height={350}
                 alt="Home Preview"

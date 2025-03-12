@@ -20,8 +20,9 @@ interface Layout extends Document {
   categories: Category[];
   banner: {
     image: BannerImage;
-    title: string;
-    subTitle: string;
+    firstTitle: string;
+    midTitle: string;
+    lastTitle: string;
   };
 }
 
@@ -45,8 +46,9 @@ const layoutSchema = new Schema<Layout>({
   categories: [categorySchema],
   banner: {
     image: bannerImageSchema,
-    title: { type: String },
-    subTitle: { type: String },
+    firstTitle: { type: String },
+    midTitle: { type: String },
+    lastTitle: { type: String },
   },
 });
 

@@ -1,14 +1,20 @@
 import {
   BookOpen,
+  Brackets,
+  Brain,
+  Bug,
   ChevronDown,
   Code,
   Contact,
   Cpu,
   Database,
   FileText,
+  FlaskConical,
   Home,
+  Layers,
   LayoutPanelTop,
-  NotebookText,
+  Network,
+  // NotebookText,
   Palette,
   Server,
   Shield,
@@ -21,27 +27,101 @@ export const navItemsData = [
   { id: 1, icon: <Home size={14} />, label: "Home", url: "/" },
   { id: 2, icon: <LayoutPanelTop size={15} />, label: "Catelog" }, // Dropdown
   { id: 3, icon: <UserRound size={14} />, label: "About us", url: "/about" },
-  { id: 4, icon: <NotebookText size={14} />, label: "Blog", url: "/blog" },
+  // { id: 4, icon: <NotebookText size={14} />, label: "Blog", url: "/blog" },
   { id: 5, icon: <Contact size={14} />, label: "Contact us", url: "/contact" },
 ];
 
 export const categories = [
-  { name: "Web Development", icon: <Code size={20} />, url: "/web-dev" },
-  { name: "Backend Development", icon: <Server size={20} />, url: "/backend" },
-  { name: "AI & ML", icon: <Cpu size={20} />, url: "/ai-ml" },
-  { name: "Data Science", icon: <Database size={20} />, url: "/data-science" },
-  { name: "UI/UX Design", icon: <Palette size={20} />, url: "/ui-ux" },
+  {
+    name: "Programming Language",
+    icon: <BookOpen size={20} />,
+    // url: "/course/programming-language",
+    url: "/category",
+  },
+  {
+    name: "Web Development",
+    icon: <Code size={20} />,
+    // url: "/course/web-development",
+    url: "/category",
+  },
+  {
+    name: "Frontend Development",
+    icon: <FileText size={20} />,
+    // url: "/course/frontend-development",
+    url: "/category",
+  },
+  {
+    name: "Backend Development",
+    icon: <Server size={20} />,
+    // url: "/course/backend-development",
+    url: "/category",
+  },
+  {
+    name: "Full Stack Development",
+    icon: <Layers size={20} />,
+    // url: "/course/fullstack-development",
+    url: "/category",
+  },
+  {
+    name: "Data Structures & Algorithms",
+    icon: <Brackets size={20} />,
+    // url: "/course/data-structure-algo",
+    url: "/category",
+  },
+  {
+    name: "Database Management",
+    icon: <Database size={20} />,
+    // url: "/course/database-management",
+    url: "/category",
+  },
+  {
+    name: "Blockchain Development",
+    icon: <Network size={20} />,
+    // url: "/course/blockchain-development",
+    url: "/category",
+  },
+  {
+    name: "Devops",
+    icon: <Cpu size={20} />,
+    // url: "/course/Devops",
+    url: "/category",
+  },
+  {
+    name: "Artificial Intelligence",
+    icon: <Brain size={20} />,
+    // url: "/course/ai",
+    url: "/category",
+  },
+  {
+    name: "Machine Learning",
+    icon: <FlaskConical size={20} />,
+    // url: "/course/ml",
+    url: "/category",
+  },
+  {
+    name: "Software Testing & QA",
+    icon: <Bug size={20} />,
+    // url: "/course/software-testing-qa",
+    url: "/category",
+  },
+  {
+    name: "Data Science",
+    icon: <Database size={20} />,
+    // url: "/course/data-science",
+    url: "/category",
+  },
+  {
+    name: "UI/UX Design",
+    icon: <Palette size={20} />,
+    // url: "/course/ui-ux"
+    url: "/category",
+  },
   {
     name: "Cyber Security",
     icon: <Shield size={20} />,
-    url: "/cyber-security",
+    // url: "/course/cyber-security",
+    url: "/category",
   },
-  {
-    name: "Technical Writing",
-    icon: <FileText size={20} />,
-    url: "/technical-writing",
-  },
-  { name: "Soft Skills", icon: <BookOpen size={20} />, url: "/soft-skills" },
 ];
 
 type Props = {
@@ -87,23 +167,31 @@ const NavItems: React.FC<Props> = ({ isMobile, setRoute, setOpen }) => {
                 <ChevronDown size={16} />
                 {isCatelogOpen && (
                   <div
-                    className="absolute left-0 top-9 w-[22rem] bg-[#222] text-white rounded-lg shadow-lg p-4 transition-all duration-300"
+                    className="absolute left-1/2 top-9 w-[50rem] -translate-x-1/2 bg-[#222] text-white rounded-lg shadow-lg p-4 transition-all duration-300"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <h3 className="text-purple-400 text-lg font-semibold mb-3 px-3 border-b border-gray-600 pb-2">
-                      Courses
-                    </h3>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="flex items-start justify-start gap-3 border-b border-gray-600">
+                      <h3 className="text-purple-400 text-lg font-semibold mb-3 px-3 pb-2">
+                        Courses
+                      </h3>
+                      <p className="text-[#6a6b6b] text-[15px] font-Inter font-light mb-3 px-3">
+                        Explore our free, expertly curated courses 💫 to boost
+                        your skills and knowledge, and learn, grow, and excel
+                        with our engaging and insightful lessons 🚀.
+                      </p>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 pt-2">
                       {categories.map((category, i) => (
                         <Link
                           key={i}
                           href={category.url}
-                          passHref
-                          className="flex items-center gap-2 px-3 py-2 hover:bg-[#333] rounded-md cursor-pointer hover:text-yellow"
+                          className="flex items-center gap-2 px-3 py-3 hover:bg-[#333] rounded-md cursor-pointer hover:text-yellow"
                         >
                           {category.icon}
-                          <span className="text-left">{category.name}</span>
+                          <span className="text-left font-Inter">
+                            {category.name}
+                          </span>
                         </Link>
                       ))}
                     </div>

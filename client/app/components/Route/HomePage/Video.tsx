@@ -51,10 +51,23 @@ const Video: React.FC = () => {
             muted
             loop
             autoPlay
-            className="rounded-2xl md:w-[63rem] md:h-[30rem]  object-cover"
+            controls
+            className="rounded-2xl md:w-[63rem] md:h-[31rem] object-cover"
           >
-            <source src="/video/video.mp4" type="video/mp4" />
+            {/* <source src="/video/video.mp4" type="video/mp4" /> */}
+            <source src="/video/edumeetVideo.mp4" type="video/mp4" />
           </video>
+          {/* <iframe
+            src="https://player.vdocipher.com/v2/?otp=20160313versASE3230JDpxYdsfye4pYQ4EJ2Gzy2rq00VSolIrjceWOtHGVp56X&playbackInfo=eyJ2aWRlb0lkIjoiMGI2ZjhkMDQ4NjRlNGM4NGE1YWE3YmE0NTgzNDA3Y2QifQ=="
+            style={{
+              border: 0,
+              height: "590px",
+              width: "1040px",
+              maxWidth: "100%",
+            }}
+            allowFullScreen={true}
+            allow="encrypted-media"
+          /> */}
         </div>
       </div>
 

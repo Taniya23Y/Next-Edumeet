@@ -36,7 +36,7 @@ const UsersAnalytics: FC<Props> = ({ isDashboard }: Props) => {
           className={`${
             !isDashboard
               ? "mt-[50px] pl-10"
-              : "mt-[50px] bg-black text-white shadow-sm pb-5 rounded-sm"
+              : "mt-[50px] text-white shadow-sm pb-5 rounded-sm"
           }`}
         >
           <div className={`${isDashboard ? "!ml-8 mb-5" : ""}`}>

@@ -27,7 +27,7 @@ courseRouter.post(
 
 courseRouter.put(
   "/edit-course/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   editCourse
@@ -44,7 +44,7 @@ courseRouter.get(
 );
 courseRouter.get(
   "/get-course-content/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   getCourseByUser
 );

@@ -54,37 +54,20 @@ const CircularProgressWithLabel: FC<Props> = ({ open, value }) => {
   );
 };
 
-const features = [
-  {
-    icon: BiBorderLeft,
-  },
-  {
-    icon: PiUsersFourLight,
-  },
-  {
-    icon: Map,
-  },
-  {
-    icon: PlayCircle,
-  },
-  {
-    icon: ClipboardList,
-  },
-  {
-    icon: Youtube,
-  },
-  {
-    icon: LineChart,
-  },
-  {
-    icon: Users,
-  },
+const features = [{ icon: BiBorderLeft }, { icon: PiUsersFourLight }];
+
+const titleIcon = [
+  { icon: Map, title: "Structured Roadmaps" },
+  { icon: PlayCircle, title: "Structured Roadmaps" },
+  { icon: ClipboardList, title: "Structured Roadmaps" },
+  { icon: Youtube, title: "Structured Roadmaps" },
+  { icon: LineChart, title: "Structured Roadmaps" },
+  { icon: Users, title: "Structured Roadmaps" },
 ];
 
 const DashboardWidgets: FC<Props> = ({ open }) => {
   const [ordersComparePercentage, setOrdersComparePercentage] = useState<any>();
   const [userComparePercentage, setuserComparePercentage] = useState<any>();
-  // const [date, setDate] = useState(new Date());
 
   const { data, isLoading } = useGetUsersAnalyticsQuery({});
   const { data: ordersData, isLoading: ordersLoading } =
@@ -138,78 +121,79 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
   }, [isLoading, ordersLoading, data, ordersData]);
 
   return (
-    <div className="min-h-screen p-6 mt-[4rem] text-white">
+    <div className="min-h-screen p-8 mt-[4rem] text-white">
       {/* Welcome Section & Calendar */}
-      <div className="min-h-screen p-6 mt-[1rem] text-white">
+      <div className=" mb-4 text-white">
         {/* Welcome Section */}
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 mb-6">
-          <div className="bg-[#1E1E1E] p-6 rounded-xl shadow-lg">
+          <div className="glass p-6 rounded-xl shadow-lg">
             <h2 className="text-3xl font-semibold text-gray-300 font-Josefin_Sans">
               Welcome to <HighlightText text="EduMeet Admin Dashboard" />
             </h2>
-            <p className="text-gray-400 mt-2">
-              Manage and analyze users, courses, and orders with ease.
+            <p className="text-gray-200 mt-2">
+              🔹Effortlessly manage and analyze 👨‍💻users, courses, invoices, and
+              🛒orders.
+            </p>
+            <p className="text-gray-200 mt-2">
+              🔹Create, ✏️edit, and preview courses with ease.
+            </p>
+            <p className="text-gray-200 mt-2">
+              🔹Customize the 🎨Hero section, FAQ, and Categories, and
+              efficiently manage your 👥team.
             </p>
           </div>
         </div>
 
         {/* Main Grid Layout: Left 6 Boxes & Right Calendar */}
-
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-[3rem]">
           {/* Left Side - 6 Boxes */}
-          <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-3">
             {/* Box 1 */}
             <div className="bg-[#F5CE65] border-2 border-[#ffd632] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[2].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
+              <VisionBtn Icon={titleIcon[0].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
                 Structured Roadmaps
               </h5>
-              <p className="text-black text-xl font-bold">10000</p>
             </div>
 
             {/* Box 2 */}
             <div className="bg-[#DE4853] border-2 border-[#f64b35] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[3].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
+              <VisionBtn Icon={titleIcon[1].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
                 Free Coding Courses
               </h5>
-              <p className="text-black text-xl font-bold">5</p>
             </div>
 
             {/* Box 3 */}
             <div className="bg-[#AFA2F4] border-2 border-[#765eed] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[4].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
+              <VisionBtn Icon={titleIcon[2].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
                 Tailored Assignments
               </h5>
-              <p className="text-black text-xl font-bold">5</p>
             </div>
 
             {/* Box 4 */}
             <div className="bg-[#2BD886] border-2 border-[#1a7b4e] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[5].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
-                YouTube & Other&apos;s Course Preview
+              <VisionBtn Icon={titleIcon[3].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
+                Search by categories
               </h5>
-              <p className="text-black text-xl font-bold">₹50K</p>
             </div>
 
             {/* Box 5 */}
             <div className="bg-[#CADE7F] border-2 border-[#cdf831] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[6].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
-                Progress Tracking
+              <VisionBtn Icon={titleIcon[4].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
+                Blog
               </h5>
-              <p className="text-black text-xl font-bold">1200</p>
             </div>
 
             {/* Box 6 */}
             <div className="bg-[#FF8C42] border-2 border-[#fb7e36] p-6 rounded-xl shadow-md">
-              <VisionBtn Icon={features[7].icon} />
-              <h5 className="text-white pt-1 text-2xl font-semibold">
-                Community Support
+              <VisionBtn Icon={titleIcon[5].icon} />
+              <h5 className="text-white pt-1 text-[18px] font-semibold">
+                Top Categories List
               </h5>
-              <p className="text-black text-xl font-bold">50</p>
             </div>
           </div>
 
@@ -221,6 +205,7 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
       </div>
 
       {/* Main Grid Layout */}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Users Analytics - Now Equal to Orders Analytics */}
         <div className="lg:col-span-2 bg-[#1E1E1E] p-6 rounded-xl shadow-lg">
@@ -293,7 +278,7 @@ const DashboardWidgets: FC<Props> = ({ open }) => {
           </h3>
           <OrdersAnalytics isDashboard={true} />
         </div>
-        <div className="bg-[#1E1E1E] p-6 rounded-xl shadow-lg">
+        <div className="glass px-3 py-2 flex flex-col items-center justify-center rounded-xl shadow-lg">
           <h5 className="text-gray-300 text-lg font-semibold pb-3">
             Recent Transactions
           </h5>

@@ -42,41 +42,83 @@ export const editCourse = catchAsyncError(
       const data = req.body;
       const thumbnail = data.thumbnail;
       const courseId = req.params.id;
+
+      // Fetch existing course data
       const courseData = (await CourseModel.findById(courseId)) as any;
-
-      if (thumbnail && !thumbnail.startsWith("https")) {
-        await cloudinary.v2.uploader.destroy(courseData.thumbnail.public_id);
-
-        const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
-          folder: "Edumeet Courses",
-        });
-
-        data.thumbnail = {
-          public_id: myCloud.public_id,
-          url: myCloud.secure_url,
-        };
+      if (!courseData) {
+        return next(new ErrorHandler("Course not found", 404));
       }
 
-      if (thumbnail.startsWith("https")) {
-        data.thumbnail = {
-          public_id: courseData?.thumbnail.public_id,
-          url: courseData?.thumbnail.url,
-        };
+      // Handle thumbnail update
+      // if (thumbnail && !thumbnail.startsWith("https")) {
+      //   await cloudinary.v2.uploader.destroy(courseData.thumbnail.public_id);
+
+      //   const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
+      //     folder: "Edumeet Courses",
+      //   });
+
+      //   data.thumbnail = {
+      //     public_id: myCloud.public_id,
+      //     url: myCloud.secure_url,
+      //   };
+      // }
+
+      // if (thumbnail.startsWith("https")) {
+      //   data.thumbnail = {
+      //     public_id: courseData?.thumbnail.public_id,
+      //     url: courseData?.thumbnail.url,
+      //   };
+      // }
+
+      if (data.thumbnail) {
+        if (
+          typeof data.thumbnail === "string" &&
+          !data.thumbnail.startsWith("https")
+        ) {
+          // Delete old thumbnail from Cloudinary
+          if (courseData.thumbnail?.public_id) {
+            await cloudinary.v2.uploader.destroy(
+              courseData.thumbnail.public_id
+            );
+          }
+
+          // Upload new thumbnail to Cloudinary
+          const myCloud = await cloudinary.v2.uploader.upload(data.thumbnail, {
+            folder: "Edumeet Courses",
+          });
+
+          // Assign new thumbnail object
+          data.thumbnail = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+          };
+        } else if (
+          typeof data.thumbnail === "string" &&
+          data.thumbnail.startsWith("https")
+        ) {
+          // Retain existing thumbnail if it's a valid URL
+          data.thumbnail = {
+            public_id: courseData.thumbnail.public_id,
+            url: courseData.thumbnail.url,
+          };
+        }
       }
 
-      const course = await CourseModel.findByIdAndUpdate(
+      // Update course in MongoDB
+      const updatedCourse = await CourseModel.findByIdAndUpdate(
         courseId,
         {
           $set: data,
         },
-        { new: true }
+        // { new: true }
+        { new: true, runValidators: true }
       );
 
-      // await redis.set(courseId, JSON.stringify(course)); // update course in redis
+      await redis.set(courseId, JSON.stringify(updatedCourse)); // update course in redis
 
-      res.status(201).json({
+      res.status(200).json({
         success: true,
-        course,
+        course: updatedCourse,
       });
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 500));
@@ -128,7 +170,6 @@ export const getAllCourses = catchAsyncError(
         courses,
       });
     } catch (error: any) {
-      // }
       return next(new ErrorHandler(error.message, 500));
     }
   }
@@ -254,6 +295,8 @@ export const addAnswer = catchAsyncError(
     const newAnswer: any = {
       user: req.user,
       answer,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     };
 
     // add this answer to our course content
@@ -273,8 +316,8 @@ export const addAnswer = catchAsyncError(
         name: question.user.name,
         title: courseContent.title,
         question: question.question,
-        replierName: req.user?.name, // Add this line
-        answer, // Add this line
+        replierName: req.user?.name,
+        answer,
       };
 
       const html = await ejs.renderFile(
@@ -317,8 +360,8 @@ export const addReview = catchAsyncError(
     try {
       const userCourseList = req.user?.courses;
       const courseId = req.params.id;
-      console.log("User's courses:", userCourseList);
-      console.log("Course ID:", courseId);
+      // console.log("User's courses:", userCourseList);
+      // console.log("Course ID:", courseId);
 
       // check if course-id already exists in user course list based on _id.
       const courseExists = userCourseList?.some(
@@ -343,7 +386,7 @@ export const addReview = catchAsyncError(
         rating,
       };
 
-      course.reviews.push(reviewData);
+      course?.reviews.push(reviewData);
 
       // Rating function & Math
       let avg = 0;
@@ -356,6 +399,8 @@ export const addReview = catchAsyncError(
       }
 
       await course?.save();
+
+      await redis.set(courseId, JSON.stringify(course), "EX", 604800);
 
       const notification = {
         title: "New Review Received",
@@ -401,6 +446,8 @@ export const addReplyToReview = catchAsyncError(
       const replyData: any = {
         user: req.user,
         comment,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       };
 
       if (!review.commentReplies) {
@@ -410,6 +457,8 @@ export const addReplyToReview = catchAsyncError(
       review.commentReplies?.push(replyData);
 
       await course?.save();
+
+      await redis.set(courseId, JSON.stringify(course), "EX", 604800);
 
       res.status(200).json({
         success: true,

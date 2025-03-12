@@ -20,7 +20,7 @@ const CustomCalendar = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center  bg-transparent text-white ">
+    <div className="glass flex flex-col items-center justify-center px-3 py-1 text-white ">
       <h2 className="text-center text-lg font-medium text-gray-300 mb-4">
         Your Study Days
       </h2>
@@ -50,17 +50,6 @@ const CustomCalendar = () => {
         Selected Date:{" "}
         <span className="text-red-500 font-semibold">{formatDate(date)}</span>
       </p>
-
-      {/* Legend */}
-      <div className="flex justify-center mt-4 gap-4 text-gray-400 text-sm">
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 bg-yellow-400 rounded-full"></span> Current
-          Day
-        </div>
-        <div className="flex items-center gap-1">
-          <span className="w-3 h-3 bg-red-500 rounded-full"></span> Selected Day
-        </div>
-      </div>
 
       <style>
         {`

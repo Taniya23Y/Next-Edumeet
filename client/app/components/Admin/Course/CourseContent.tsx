@@ -11,10 +11,10 @@ import { BsLink45Deg } from "react-icons/bs";
 import toast from "react-hot-toast";
 
 type Props = {
-  courseContentData: any;
-  setCourseContentData: (courseContentData: any) => void;
   active: number;
   SetActive: (active: number) => void;
+  courseContentData: any;
+  setCourseContentData: (courseContentData: any) => void;
   handleSubmit: any;
 };
 
