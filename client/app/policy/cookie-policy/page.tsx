@@ -30,7 +30,7 @@ const page = () => {
         keywords="Edumeet, coding courses, programming tutorials, free coding resources, structured learning, YouTube coding, web development, DSA, MERN stack, JavaScript, Python, React, software development"
       />
       <Header open={open} setOpen={setOpen} setRoute={setRoute} route={route} />
-      <div className="pt-[9rem] pb-[2rem]">
+      <div className="pt-[5rem] md:pt-[9rem] pb-[2rem]">
         <CookiePolicy />
       </div>
       <Footer />

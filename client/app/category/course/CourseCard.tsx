@@ -13,7 +13,7 @@ type Props = {
 
 const CourseCard: FC<Props> = ({ item, isProfile }) => {
   return (
-    <div className="group w-[300px] h-[400px] hover:border-2 hover:border-gray-400 bg-black bg-opacity-70 backdrop-blur-lg border border-[#ffffff1a] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-md p-4 relative overflow-hidden flex flex-col justify-between">
+    <div className="group w-[320px] h-[400px] hover:border-2 hover:border-gray-400 bg-black bg-opacity-70 backdrop-blur-lg border border-[#ffffff1a] shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out rounded-md p-4 relative overflow-hidden flex flex-col justify-between">
       {/* Clickable Wrapper including Enroll Button */}
       <Link
         href={!isProfile ? `/course/${item._id}` : `course-access/${item._id}`}

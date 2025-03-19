@@ -12,6 +12,7 @@ type Props = {
   setOpen: (open: boolean) => void;
   component: any;
   setRoute?: (route: string) => void;
+  refetch?: any;
 };
 
 const CustomModal: FC<Props> = ({
@@ -19,6 +20,7 @@ const CustomModal: FC<Props> = ({
   setOpen,
   setRoute,
   component: Component,
+  refetch,
 }) => {
   return (
     <Modal
@@ -29,7 +31,7 @@ const CustomModal: FC<Props> = ({
       className="container"
       slotProps={{ backdrop: { invisible: true } }} // Fix deprecated BackdropProps
     >
-      <>
+      <Box>
         {/* Overlay */}
         <motion.div
           initial={{ opacity: 0, x: "-100%" }}
@@ -107,11 +109,15 @@ const CustomModal: FC<Props> = ({
               <p>Back</p>
             </div>
             <div className="pt-[6rem] md:pt-[7rem]">
-              <Component setOpen={setOpen} setRoute={setRoute} />
+              <Component
+                setOpen={setOpen}
+                setRoute={setRoute}
+                refetch={refetch}
+              />
             </div>
           </Box>
         </Box>
-      </>
+      </Box>
     </Modal>
   );
 };

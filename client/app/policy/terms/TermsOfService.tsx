@@ -162,7 +162,7 @@ const TermOfService = () => {
         For any questions regarding this policy, please contact us at
         <a
           href="mailto:edumeetlearn@gmail.com"
-          className="text-yellow hover:underline"
+          className="text-yellow pl-1 underline"
         >
           edumeetlearn@gmail.com
         </a>

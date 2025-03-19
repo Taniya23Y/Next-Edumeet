@@ -21,14 +21,14 @@ const quickLinks = [
     id: 2,
     icon: <PaperclipIcon size={16} />,
     label: "Courses",
-    url: "/courses",
+    url: "/category",
   },
   { id: 3, icon: <NotebookText size={16} />, label: "Blog", url: "/blog" },
   {
     id: 4,
     icon: <Contact size={16} />,
     label: "Contact Us",
-    url: "/contactus",
+    url: "/contact",
   },
 ];
 

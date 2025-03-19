@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { apiSlice } from "../api/apiSlice";
 
 export const ordersApi = apiSlice.injectEndpoints({

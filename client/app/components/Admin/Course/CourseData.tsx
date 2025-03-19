@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { styles } from "@/app/styles/style";
 import React, { FC } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { IoMdAddCircle } from "react-icons/io";
 
 type Props = {

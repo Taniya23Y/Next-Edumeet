@@ -13,7 +13,7 @@ import {
 } from "@/redux/features/courses/coursesApi";
 import { format } from "timeago.js";
 import { styles } from "@/app/styles/style";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import LoaderOne from "../../Loader/LoaderOne";
 
 const AllCourses = () => {

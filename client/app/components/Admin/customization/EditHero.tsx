@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import ImageHero from "../../../../public/images/adminHero.png";
 import { AiOutlineCamera } from "react-icons/ai";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { styles } from "@/app/styles/style";
 
 const EditHero = () => {

@@ -14,12 +14,13 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { styles } from "@/app/styles/style";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 
 type Props = {
   setRoute: (route: string) => void;
   setOpen: (open: boolean) => void;
+  refetch: any;
 };
 
 const schema = Yup.object().shape({
@@ -29,7 +30,7 @@ const schema = Yup.object().shape({
   password: Yup.string().required("Please, Enter Your Password").min(6),
 });
 
-const Login: FC<Props> = ({ setRoute, setOpen }) => {
+const Login: FC<Props> = ({ setRoute, setOpen, refetch }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isSuccess, error }] = useLoginMutation();
 
@@ -45,6 +46,7 @@ const Login: FC<Props> = ({ setRoute, setOpen }) => {
     if (isSuccess) {
       toast.success("Login Successfully!");
       setOpen(false);
+      refetch();
     }
     if (error) {
       if ("data" in error) {

@@ -20,7 +20,8 @@ import {
   useLogoutQuery,
   useSocialAuthMutation,
 } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
+import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 
 type Props = {
   open: boolean;
@@ -32,6 +33,11 @@ type Props = {
 const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
   const [openSidebar, setOpenSidebar] = useState(false);
   const { user } = useSelector((state: any) => state.auth);
+  const {
+    data: userData,
+    isLoading,
+    refetch,
+  } = useLoadUserQuery(undefined, {});
   const { data } = useSession();
   const [socialAuth, { isSuccess, error }] = useSocialAuthMutation();
   const [logout, setLogout] = useState(false);
@@ -40,39 +46,42 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
   });
 
   useEffect(() => {
-    if (!user && data) {
-      socialAuth({
-        email: data?.user?.email,
-        name: data?.user?.name,
-        avatar: data?.user?.image,
-      });
-    }
+    if (!isLoading) {
+      if (!userData && data) {
+        socialAuth({
+          email: data?.user?.email,
+          name: data?.user?.name,
+          avatar: data?.user?.image,
+        });
+        refetch();
+      }
 
-    if (data === null) {
-      if (isSuccess) {
-        const hasLoggedIn = sessionStorage.getItem("loggedIn");
-        if (!hasLoggedIn) {
-          toast.success("Login Successfully!");
-          sessionStorage.setItem("loggedIn", "true"); // Prevent future triggers
+      if (data === null) {
+        if (isSuccess) {
+          const hasLoggedIn = sessionStorage.getItem("loggedIn");
+          if (!hasLoggedIn) {
+            toast.success("Login Successfully!");
+            sessionStorage.setItem("loggedIn", "true"); // Prevent future triggers
+          }
         }
       }
-    }
 
-    if (data === null) {
-      setLogout(true);
-    }
+      if (data === null && !isLoading && !userData) {
+        setLogout(true);
+      }
 
-    if (error) {
-      const errorMessage =
-        "status" in error
-          ? `Error ${error.status}: ${JSON.stringify(error.data)}`
-          : error.message || "Something went wrong!";
-      toast.error(errorMessage);
+      if (error) {
+        const errorMessage =
+          "status" in error
+            ? `Error ${error.status}: ${JSON.stringify(error.data)}`
+            : error.message || "Something went wrong!";
+        toast.error(errorMessage);
+      }
     }
-  }, [data, user, error]);
+  }, [data, userData, error, isLoading]);
 
   return (
-    <div className="container mx-auto fixed left-0 right-0 top-0 z-50 py-3 px-0 xl:px-2">
+    <div className="container mx-auto fixed left-0 right-0 top-0 z-50 py-1 px-0 xl:px-2">
       {/* outer container  */}
       <div className="flex justify-between items-center rounded-2xl bg-black p-2 border-[0.5px] border-[#ffffff13]">
         {/* Left - Logo */}
@@ -184,6 +193,7 @@ const Header: FC<Props> = ({ setOpen, route, open, setRoute }) => {
               setOpen={setOpen}
               setRoute={setRoute}
               component={Login}
+              refetch={refetch}
             />
           )}
         </>

@@ -12,7 +12,7 @@ import {
   useEditCourseMutation,
   useGetAllCoursesQuery,
 } from "@/redux/features/courses/coursesApi";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
 type Props = {

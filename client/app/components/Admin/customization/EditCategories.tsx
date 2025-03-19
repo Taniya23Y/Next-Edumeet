@@ -10,7 +10,7 @@ import Loader from "../../Loader/Loader";
 import { styles } from "@/app/styles/style";
 import { AiOutlineDelete } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 interface Category {
   _id: string;

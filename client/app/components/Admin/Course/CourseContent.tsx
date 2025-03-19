@@ -8,7 +8,7 @@ import { AiOutlineDelete, AiOutlinePlusCircle } from "react-icons/ai";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BiPencil } from "react-icons/bi";
 import { BsLink45Deg } from "react-icons/bs";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 type Props = {
   active: number;

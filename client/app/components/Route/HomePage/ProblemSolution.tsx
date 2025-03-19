@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import {
   FaLightbulb,
@@ -107,7 +108,12 @@ const ProblemSolution: React.FC = () => {
 
         {/* button */}
         <button className="rounded-tl-2xl rounded-br-2xl w-full h-12 flex gap-4 items-center justify-center text-lg font-medium text-gray-900 bg-[#B97FF3] shadow-md hover:bg-[#2DAE76] hover:scale-95 transition-all duration-200 hover:shadow-none">
-          Check Courses <FaLongArrowAltRight className="text-xl" />
+          <Link
+            href="/category"
+            className="flex items-center justify-center gap-3"
+          >
+            Check Courses <FaLongArrowAltRight className="text-xl" />
+          </Link>
         </button>
       </div>
     </div>

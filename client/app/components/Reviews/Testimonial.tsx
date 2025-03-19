@@ -66,7 +66,7 @@ export default function Testimonial() {
                         Ratings:
                       </h1>
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-xl">
+                        <span key={i} className="text-[14px] md:text-xl">
                           ⭐
                         </span>
                       ))}

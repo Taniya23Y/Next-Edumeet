@@ -360,8 +360,6 @@ export const addReview = catchAsyncError(
     try {
       const userCourseList = req.user?.courses;
       const courseId = req.params.id;
-      // console.log("User's courses:", userCourseList);
-      // console.log("Course ID:", courseId);
 
       // check if course-id already exists in user course list based on _id.
       const courseExists = userCourseList?.some(
@@ -384,6 +382,8 @@ export const addReview = catchAsyncError(
         user: req.user,
         comment: review,
         rating,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       };
 
       course?.reviews.push(reviewData);

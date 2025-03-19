@@ -13,7 +13,7 @@ import {
   useDeleteUserMutation,
 } from "@/redux/features/user/userApi";
 import { MdMarkEmailRead } from "react-icons/md";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { styles } from "@/app/styles/style";
 import LoaderOne from "../../Loader/LoaderOne";
 

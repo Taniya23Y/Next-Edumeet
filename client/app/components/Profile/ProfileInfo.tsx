@@ -11,7 +11,7 @@ import {
   useUpdateAvatarMutation,
 } from "@/redux/features/user/userApi";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 type Props = {
   avatar: string | null;
@@ -30,19 +30,21 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
 
   const imageHandler = async (e: any) => {
     const fileReader = new FileReader();
-
     fileReader.onload = () => {
       if (fileReader.readyState === 2) {
-        const avatar = fileReader.result;
-        updateAvatar(avatar);
+        const avatars = fileReader.result;
+        updateAvatar({
+          avatar: avatars,
+        });
       }
     };
     fileReader.readAsDataURL(e.target.files[0]);
   };
 
   useEffect(() => {
-    if (isSuccess || success) {
+    if (isSuccess) {
       setLoaderUser(true);
+      toast.success("user updated successfully");
     }
 
     if (error || err) {
@@ -72,16 +74,22 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
     }
   };
   return (
-    <div className="glass glass-bg p-4">
+    <div className="glass glass-bg pt-2">
       <div className="w-full flex justify-center">
         <div className="relative">
           <Image
-            src={user.avatar || avatar ? user.avatar.url || avatar : avatarIcon}
-            alt="user avatar"
-            width={100} // Increased for HD clarity
-            height={100}
-            quality={100} // Ensures HD rendering
-            className="w-[80px] h-[80px] rounded-full border-[2px] border-yellow object-cover select-none pointer-events-none"
+            src={
+              user?.avatar
+                ? user?.avatar?.url
+                : user?.socialAvatar
+                ? user?.socialAvatar
+                : avatar || avatarIcon
+            }
+            alt="profile-pic"
+            quality={100}
+            width={120}
+            height={120}
+            className="w-[120px] h-[120px] cursor-pointer border-[3px] border-yellow rounded-full"
           />
           <input
             type="file"
@@ -92,8 +100,8 @@ const ProfileInfo: FC<Props> = ({ avatar, user }) => {
             accept="image/png,image/jpg, image/jpeg, image/webp"
           />
           <label htmlFor="avatar">
-            <div className="w-[27px] h-[27px] bg-green-400 text-[#000000] rounded-full absolute bottom-[0.5px] right-[0.5px] flex items-center justify-center cursor-pointer">
-              <AiOutlineCamera size={20} className="z-1" />
+            <div className="w-[30px] h-[30px] bg-green-400 text-[#000000] rounded-full absolute bottom-2 right-2 flex items-center justify-center cursor-pointer">
+              <AiOutlineCamera size={20} className="text-white" />
             </div>
           </label>
         </div>

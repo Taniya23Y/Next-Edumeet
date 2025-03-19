@@ -12,7 +12,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  /* font-family: var(--font-Inter); */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,7 +44,7 @@ body {
 
 @layer utilities {
   .container {
-    @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
+    @apply mx-auto max-w-[1352px] px-2 max-xl:px-10 max-lg:px-6 max-sm:px-1;
   }
   .faq-icon {
     @apply before:absolute before:h-0.5 before:w-3 before:bg-[#000000] before:content-[''] after:absolute after:h-0.5 after:w-3 after:rotate-90 after:bg-[#1d1d1d] after:transition-all after:duration-500 after:content-[''];
@@ -91,7 +90,7 @@ input[type="number"] {
 }
 
 .scrollbar-custom::-webkit-scrollbar-thumb {
-  background: #1d1d1d;
+  background: #ffffff6c;
   border-radius: 10px;
 }
 

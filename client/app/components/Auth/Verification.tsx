@@ -7,7 +7,7 @@ import { VscWorkspaceTrusted } from "react-icons/vsc";
 import { styles } from "../../styles/style";
 import { useSelector } from "react-redux";
 import { useActivationMutation } from "@/redux/features/auth/authApi";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 
 type Props = {
   setRoute: (route: string) => void;

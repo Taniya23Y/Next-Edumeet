@@ -8,9 +8,12 @@ import { Providers } from "./Provider";
 import { SessionProvider } from "next-auth/react";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import Loader from "./components/Loader/Loader";
-import { useState } from "react";
-import { Toaster } from "react-hot-toast";
-// import LoaderOne from "./components/Loader/LoaderOne";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import socketIO from "socket.io-client";
+const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URI || "";
+const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,13 +36,6 @@ const josefin_sans = Josefin_Sans({
   display: "swap",
 });
 
-// export const metadata: Metadata = {
-//   title: "Edumeet | Learning Hub",
-//   description: "Edumeet provides structured coding courses from YouTube...",
-//   keywords:
-//     "Edumeet, coding courses, programming tutorials, free coding resources, structured learning, YouTube coding, web development, DSA, MERN stack, JavaScript, Python, React, software development",
-// };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,7 +49,7 @@ export default function RootLayout({
         <Providers>
           <SessionProvider>
             {/* <Cursor /> */}
-            <Toaster position="top-right" reverseOrder={false} />
+            <ToastContainer position="top-right" theme="colored" />
             <Custom>{children}</Custom>
           </SessionProvider>
         </Providers>
@@ -66,6 +62,10 @@ const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isLoading } = useLoadUserQuery({});
   const [showContent, setShowContent] = useState(false);
 
+  useEffect(() => {
+    socketId.on("connection", () => {});
+  }, []);
+
   return (
     <>
       {isLoading || !showContent ? (
@@ -75,6 +75,4 @@ const Custom: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       )}
     </>
   );
-
-  // return <>{isLoading ? <LoaderOne /> : <div>{children}</div>}</>;
 };

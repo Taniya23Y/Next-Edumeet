@@ -9,7 +9,7 @@ import CourseData from "./CourseData";
 import CourseContent from "./CourseContent";
 import CoursePreview from "./CoursePreview";
 import { useCreateCourseMutation } from "@/redux/features/courses/coursesApi";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
 const CreateCourse = () => {

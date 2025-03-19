@@ -114,7 +114,7 @@ const CopyrightNotice = () => {
           For any questions regarding this policy, please contact us at{" "}
           <a
             href="mailto:edumeetlearn@gmail.com"
-            className="text-yellow hover:underline"
+            className="text-yellow underline"
           >
             edumeetlearn@gmail.com
           </a>

@@ -12,6 +12,7 @@ import UnlockBanner from "./HomePage/UnlockBanner";
 import ProblemSolution from "./HomePage/ProblemSolution";
 import RightCourse from "./HomePage/RightCourse";
 import Faq from "./HomePage/Faq";
+import Testimonial from "../Reviews/Testimonial";
 
 const Home: React.FC = () => {
   const videoRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* CodeBox | section - 3  */}
-      <div className="md:pt-[0rem]">
+      <div className="px-5">
         <CodeBox
           position="lg:flex-row"
           heading={
@@ -59,14 +60,14 @@ const Home: React.FC = () => {
       </div>
 
       {/* subHero | section - 4  */}
-      <div className="md:pt-[7rem]">
+      <div className="md:pt-[3rem] px-5">
         <SubHero
           ctabtn1={{ btnText: "Start Now", linkto: "/login", active: true }}
         />
       </div>
 
       {/* code | section - 5 */}
-      <div className="md:pt-[7rem]">
+      <div className="md:pt-[3rem] px-5">
         <CodeBox
           position={"lg:flex-row-reverse"}
           heading={
@@ -95,7 +96,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* UnlockBanner | section - 6  */}
-      <div className="md:pt-[7rem]">
+      <div className="md:pt-[3rem]">
         <UnlockBanner />
       </div>
 
@@ -141,30 +142,39 @@ const Home: React.FC = () => {
       </div>
 
       {/* RightCourse | section - 8  */}
-      <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8">
+      <div className="w-11/12 pt-[2rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8">
         <RightCourse />
       </div>
 
-      {/* FAQ | section - 9  */}
+      {/* TestimonialReview | section - 9  */}
+      <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
+        <h2 className="text-center text-4xl font-semibold mt-10 pt-1">
+          <HighlightText text="User Testimonials" />
+        </h2>
+        <div className="flex items-center justify-center flex-col gap-4 mb-10">
+          <h1 className="text-3xl font-bold pt-5">What our users say</h1>
+          <p className="w-[70%] text-lg font-Josefin_Sans text-center text-purple-200">
+            Explore inspiration and valuable insights from our students latest
+            reviews. Their success stories showcase the transformation impact of
+            learning and growing with Edumeet.
+          </p>
+        </div>
+
+        <Testimonial />
+      </div>
+
+      {/* FAQ | section - 10  */}
       <div className="w-11/12 pt-[4rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         <h2 className="text-center text-4xl font-semibold mt-0">
           <HighlightText text="Discover More with Our FAQ Section" />
         </h2>
       </div>
 
-      <Faq />
-
-      {/* TestimonialReview | section - 10  */}
-
-      {/* <div className="w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
-        <h2 className="text-center text-4xl font-semibold mt-10 pt-9">
-          <HighlightText text="User Testimonials" />
-        </h2>
-        <TestimonialReview />
-      </div> */}
+      <div className="px-2 md:px-10">
+        <Faq />
+      </div>
 
       {/* Subscribe | section - 11  */}
-
       <div className="w-11/12 pt-[1rem] mx-auto max-w-maxContent flex-col items-center justify-between gap-8 text-white">
         <h2 className="text-center text-4xl font-semibold mt-10">
           <HighlightText text="Subscribe to Newsletter ✨" />
