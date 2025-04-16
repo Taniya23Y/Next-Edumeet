@@ -1,0 +1,49 @@
+/* Fullscreen Centered Container */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #0a0a0a;
+}
+
+/* Center Content Horizontally */
+.loader-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 30%; /* Shorter Line */
+}
+
+/* Moving Progress Line (Shortened) */
+.progress-line {
+  height: 1px;
+  width: 30%; /* Shortened width */
+  background: white;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Percentage Text */
+.progress-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Logo (Grows as Progress Increases) */
+.logo-wrapper {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Welcome Text */
+.welcome-text {
+  color: #d19f10;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+}

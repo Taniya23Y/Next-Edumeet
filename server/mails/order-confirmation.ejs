@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+    <style type="text/css">
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 90%;
+        width: 500px;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 20px auto;
+      }
+
+      .logo-box {
+        background-color: #1d1d1d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 15px;
+        padding-bottom: 15px;
+        border-radius: 10px;
+        gap: 10px;
+        max-width: 230px;
+        margin: 0 auto;
+        width: fit-content;
+        height: auto;
+      }
+
+      .logo {
+        height: 35px;
+        width: 35px;
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: #ffb400;
+        text-align: center;
+        text-decoration: underline;
+        padding-top: 3px;
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .message {
+        font-size: 22px;
+        font-weight: bold;
+        color: #bfdc98;
+        margin-bottom: 20px;
+        padding-top: 14px;
+      }
+      .pClass {
+        color: #a855f7;
+      }
+
+      .course-info {
+        background-color: #f1f1f1;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .course-info h4 {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .support {
+        font-size: 14px;
+        color: #888;
+        margin-top: 25px;
+      }
+
+      .support a {
+        color: #a855f7;
+        text-decoration: none;
+      }
+
+      .support a:hover {
+        color: #d63384;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f8d775;
+        color: #333;
+      }
+
+      .total {
+        color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-box">
+        <a href="https://edumeet-project.vercel.app">
+          <img
+            class="logo"
+            src="https://raw.githubusercontent.com/Taniya23Y/EduMeet/refs/heads/main/00_frontend-edumeet/src/assets/edumeet-yellow-logo-removebg-preview.png"
+            alt="EduMeet Logo"
+          />
+        </a>
+        <p class="logo-text">Edumeet</p>
+      </div>
+      <div class="">
+        <h1 class="message">Your Edumeet order is confirmed!</h1>
+        <p class="pClass">And we are just as excited as you are.</p>
+      </div>
+
+      <div class="course-info">
+        <h4>Order Details:</h4>
+        <p class="purchase-info">Order #: <strong><%= order._id %></strong></p>
+        <p class="purchase-info">
+          Order Date: <strong><%= order.date %></strong>
+        </p>
+
+        <table>
+          <tr>
+            <th>Course Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td><strong><%= order.name %></strong></td>
+            <td>1</td>
+            <td>$<%= order.price %></td>
+          </tr>
+        </table>
+
+        <p><span class="total">Total:</span> $<%= order.price %></p>
+      </div>
+
+      <div class="support">
+        <p>
+          If you have any questions or need assistance, please feel free to
+          reach out to us at
+          <a href="mailto:info@edumeet.com">info@edumeet.com</a>. We are here to
+          help! 😊
+        </p>
+        <p>&copy; 2024 Edumeet. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>
