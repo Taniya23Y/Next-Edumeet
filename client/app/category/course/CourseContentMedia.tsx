@@ -12,7 +12,6 @@ import Image from "next/image";
 import { format } from "timeago.js";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-
 import {
   AiFillStar,
   AiOutlineArrowLeft,
@@ -43,19 +42,9 @@ const CourseContentMedia = ({
   user,
   refetch,
 }: Props) => {
-  const [activeBar, setActiveBar] = useState(0);
-  const [question, setQuestion] = useState("");
-  const [review, setReview] = useState("");
-  const [rating, setRating] = useState(1);
-  const [answer, setAnswer] = useState("");
-  const [questionId, setQuestionId] = useState("");
-  const [reply, setReply] = useState("");
-  const [reviewId, setReviewId] = useState("");
-  const [isReviewReply, setIsReviewReply] = useState(false);
-
   const [
     addNewQuestion,
-    { isSuccess, error, isLoading: questionCreationLoading },
+    { isSuccess: questionSuccess, error, isLoading: questionCreationLoading },
   ] = useAddNewQuestionMutation();
   const { data: courseData, refetch: courseRefetch } =
     useGetCoursesDetailsQuery(id, { refetchOnMountOrArgChange: true });
@@ -67,7 +56,6 @@ const CourseContentMedia = ({
       isLoading: answerCreationLoading,
     },
   ] = useAddAnswerInQuestionMutation();
-  const course = courseData?.course;
   const [
     addReviewInCourse,
     {
@@ -85,12 +73,22 @@ const CourseContentMedia = ({
       isLoading: replyCreationLoading,
     },
   ] = useAddReplyInReviewMutation();
+  const [activeBar, setActiveBar] = useState(0);
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [questionId, setQuestionId] = useState("");
+  const [rating, setRating] = useState(1);
+  const [review, setReview] = useState("");
+  const [isReviewReply, setIsReviewReply] = useState(false);
+  const [reply, setReply] = useState("");
+  const [reviewId, setReviewId] = useState("");
 
+  const course = courseData?.course;
   const isReviewExists = course?.reviews?.find(
     (item: any) => item.user._id === user._id
   );
 
-  const handleQuestion = () => {
+  const handleQuestionSubmit = () => {
     if (question.length === 0) {
       toast.error("Question can't be empty");
     } else {
@@ -103,7 +101,7 @@ const CourseContentMedia = ({
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (questionSuccess) {
       setQuestion("");
       refetch();
       toast.success("Question added successFully");
@@ -112,6 +110,12 @@ const CourseContentMedia = ({
         message: `You have a new question in ${data[activeVideo].title}`,
         userId: user?._id,
       });
+    }
+    if (error) {
+      if ("data" in error) {
+        const errorMessage = error as any;
+        toast.error(errorMessage.data.message);
+      }
     }
     if (answerSuccess) {
       setAnswer("");
@@ -125,21 +129,15 @@ const CourseContentMedia = ({
         });
       }
     }
-    if (error) {
-      if ("data" in error) {
-        const errorMessage = error as any;
-        toast.error(errorMessage.data.message);
-      }
-    }
     if (answerError) {
       if ("data" in answerError) {
-        const errorMessage = error as any;
+        const errorMessage = answerError as any;
         toast.error(errorMessage.data.message);
       }
     }
     if (reviewSuccess) {
       setReview("");
-      setRating(1);
+      // setRating(1);
       courseRefetch();
       toast.success("Review added successfully!");
       socketId.emit("notification", {
@@ -150,7 +148,7 @@ const CourseContentMedia = ({
     }
     if (reviewError) {
       if ("data" in reviewError) {
-        const errorMessage = error as any;
+        const errorMessage = reviewError as any;
         toast.error(errorMessage.data.message);
       }
     }
@@ -161,12 +159,12 @@ const CourseContentMedia = ({
     }
     if (replyError) {
       if ("data" in replyError) {
-        const errorMessage = error as any;
+        const errorMessage = replyError as any;
         toast.error(errorMessage.data.message);
       }
     }
   }, [
-    isSuccess,
+    questionSuccess,
     refetch,
     error,
     activeVideo,
@@ -203,7 +201,7 @@ const CourseContentMedia = ({
       if (reply === "") {
         toast.error("Reply can't be empty");
       } else {
-        addReplyInReview({ comment: reply, courseId: id, reviewId });
+        addReplyInReview({ comment: reply, courseId: id, reviewId: reviewId });
       }
     }
   };
@@ -320,7 +318,9 @@ const CourseContentMedia = ({
               } !w-[120px] !h-[40px] flex items-center justify-center text-center text-[18px] mt-5 ${
                 questionCreationLoading && "cursor-not-allowed"
               }`}
-              onClick={questionCreationLoading ? () => {} : handleQuestion}
+              onClick={
+                questionCreationLoading ? () => {} : handleQuestionSubmit
+              }
             >
               <div className="cursor-pointer font-bold">Submit</div>
             </div>

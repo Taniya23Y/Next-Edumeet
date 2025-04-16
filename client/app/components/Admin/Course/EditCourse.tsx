@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 
 import React, { FC, useEffect, useState } from "react";
 import CourseInformation from "./CourseInformation";
@@ -48,11 +47,11 @@ const EditCourse: FC<Props> = ({ id }) => {
       setCourseInfo({
         name: editCourseData.name,
         description: editCourseData.description,
+        categories: editCourseData.categories,
         price: editCourseData.price,
         estimatedPrice: editCourseData?.estimatedPrice,
         tags: editCourseData.tags,
         level: editCourseData.level,
-        categories: editCourseData.categories,
         demoUrl: editCourseData.demoUrl,
         thumbnail: editCourseData?.thumbnail?.url,
       });
@@ -65,11 +64,11 @@ const EditCourse: FC<Props> = ({ id }) => {
   const [courseInfo, setCourseInfo] = useState({
     name: "",
     description: "",
+    categories: "",
     price: "",
     estimatedPrice: "",
     tags: "",
     level: "",
-    categories: "",
     demoUrl: "",
     thumbnail: "",
   });
@@ -81,6 +80,7 @@ const EditCourse: FC<Props> = ({ id }) => {
       title: "",
       description: "",
       videoSection: "Untitled Section",
+      videoLength: "",
       links: [{ title: "", url: "" }],
       suggestion: "",
     },
@@ -104,6 +104,7 @@ const EditCourse: FC<Props> = ({ id }) => {
         videoUrl: courseContent.videoUrl,
         title: courseContent.title,
         description: courseContent.description,
+        videoLength: courseContent.videoLength,
         videoSection: courseContent.videoSection,
         links: courseContent.links.map((link) => ({
           title: link.title,

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 
 import { styles } from "../../../styles/style";
 import React, { FC, useState } from "react";
@@ -57,9 +56,9 @@ const CourseContent: FC<Props> = ({
       item.title === "" ||
       item.description === "" ||
       item.videoUrl === "" ||
+      item.videoLength === "" ||
       item.links[0].title === "" ||
-      item.links[0].url === "" ||
-      item.videoLength === ""
+      item.links[0].url === ""
     ) {
       toast.error("Please fill all the fields first!");
     } else {
@@ -77,9 +76,9 @@ const CourseContent: FC<Props> = ({
       const newContent = {
         videoUrl: "",
         title: "",
+        videoLength: "",
         description: "",
         videoSection: newVideoSection,
-        videoLength: "",
         links: [{ title: "", url: "" }],
       };
 
@@ -91,6 +90,7 @@ const CourseContent: FC<Props> = ({
     if (
       courseContentData[courseContentData.length - 1].title === "" ||
       courseContentData[courseContentData.length - 1].description === "" ||
+      courseContentData[courseContentData.length - 1].videoLength === "" ||
       courseContentData[courseContentData.length - 1].videoUrl === "" ||
       courseContentData[courseContentData.length - 1].links[0].title === "" ||
       courseContentData[courseContentData.length - 1].links[0].url === ""
@@ -101,8 +101,8 @@ const CourseContent: FC<Props> = ({
       const newContent = {
         videoUrl: "",
         title: "",
-        description: "",
         videoLength: "",
+        description: "",
         videoSection: `Untitled Section ${activeSection}`,
         links: [{ title: "", url: "" }],
       };

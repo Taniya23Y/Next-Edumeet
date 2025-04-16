@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Response, NextFunction, Request } from "express";
 import { catchAsyncError } from "../middleware/catchAsyncErrors";
 import ErrorHandler from "../utils/ErrorHandler";
 import cloudinary from "cloudinary";
@@ -40,7 +40,7 @@ export const editCourse = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data = req.body;
-      const thumbnail = data.thumbnail;
+      const thumbnail = data.thumbnail as string;
       const courseId = req.params.id;
 
       // Fetch existing course data
@@ -49,59 +49,26 @@ export const editCourse = catchAsyncError(
         return next(new ErrorHandler("Course not found", 404));
       }
 
-      // Handle thumbnail update
-      // if (thumbnail && !thumbnail.startsWith("https")) {
-      //   await cloudinary.v2.uploader.destroy(courseData.thumbnail.public_id);
-
-      //   const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
-      //     folder: "Edumeet Courses",
-      //   });
-
-      //   data.thumbnail = {
-      //     public_id: myCloud.public_id,
-      //     url: myCloud.secure_url,
-      //   };
-      // }
-
-      // if (thumbnail.startsWith("https")) {
-      //   data.thumbnail = {
-      //     public_id: courseData?.thumbnail.public_id,
-      //     url: courseData?.thumbnail.url,
-      //   };
-      // }
-
-      if (data.thumbnail) {
-        if (
-          typeof data.thumbnail === "string" &&
-          !data.thumbnail.startsWith("https")
-        ) {
-          // Delete old thumbnail from Cloudinary
-          if (courseData.thumbnail?.public_id) {
-            await cloudinary.v2.uploader.destroy(
-              courseData.thumbnail.public_id
-            );
-          }
-
-          // Upload new thumbnail to Cloudinary
-          const myCloud = await cloudinary.v2.uploader.upload(data.thumbnail, {
-            folder: "Edumeet Courses",
-          });
-
-          // Assign new thumbnail object
-          data.thumbnail = {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url,
-          };
-        } else if (
-          typeof data.thumbnail === "string" &&
-          data.thumbnail.startsWith("https")
-        ) {
-          // Retain existing thumbnail if it's a valid URL
-          data.thumbnail = {
-            public_id: courseData.thumbnail.public_id,
-            url: courseData.thumbnail.url,
-          };
+      if (thumbnail && !thumbnail.startsWith("https")) {
+        if (courseData?.thumbnail.public_id) {
+          await cloudinary.v2.uploader.destroy(courseData.thumbnail.public_id);
         }
+
+        const myCloud = await cloudinary.v2.uploader.upload(thumbnail, {
+          folder: "Edumeet Courses",
+        });
+
+        data.thumbnail = {
+          public_id: myCloud.public_id,
+          url: myCloud.secure_url,
+        };
+      }
+
+      if (thumbnail.startsWith("https")) {
+        data.thumbnail = {
+          public_id: courseData?.thumbnail.public_id,
+          url: courseData?.thumbnail.url,
+        };
       }
 
       // Update course in MongoDB
@@ -141,7 +108,7 @@ export const getSingleCourse = catchAsyncError(
         });
       } else {
         const course = await CourseModel.findById(req.params.id).select(
-          "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
+          "-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion"
         );
 
         await redis.set(courseId, JSON.stringify(course), "EX", 604800);
@@ -162,7 +129,7 @@ export const getAllCourses = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const courses = await CourseModel.find().select(
-        "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
+        "-courseData.videoUrl -courseData.links -courseData.questions -courseData.suggestion"
       );
 
       res.status(200).json({
@@ -351,6 +318,7 @@ export const addAnswer = catchAsyncError(
 // add review in course function
 interface IAddReviewData {
   review: string;
+  // courseId:string;
   rating: number;
   userId: string;
 }
@@ -380,8 +348,8 @@ export const addReview = catchAsyncError(
 
       const reviewData: any = {
         user: req.user,
-        comment: review,
         rating,
+        comment: review,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
@@ -402,12 +370,11 @@ export const addReview = catchAsyncError(
 
       await redis.set(courseId, JSON.stringify(course), "EX", 604800);
 
-      const notification = {
+      await NotificationModel.create({
+        userId: req.user?._id,
         title: "New Review Received",
         message: `${req.user?.name} has given a review in ${course?.name}`,
-      };
-
-      // create notification
+      });
 
       res.status(200).json({
         success: true,
@@ -475,7 +442,8 @@ export const getAdminAllCourses = catchAsyncError(
   // export const getCourses = catchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      getAllCourseService(res);
+      // getAllCourseService(res);
+      await getAllCourseService(res);
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }

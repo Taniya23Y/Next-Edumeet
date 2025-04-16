@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
 
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";

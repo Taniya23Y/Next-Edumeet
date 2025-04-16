@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
+import React, { useEffect } from "react";
 import CourseContent from "@/app/category/course/CourseContent";
 import LoaderOne from "@/app/components/Loader/LoaderOne";
 import { useLoadUserQuery } from "@/redux/features/api/apiSlice";
 import { redirect } from "next/navigation";
-import React, { useEffect } from "react";
 
 type Props = {
   params: any;
@@ -16,7 +17,7 @@ const Page = ({ params }: Props) => {
 
   useEffect(() => {
     if (data) {
-      const isPurchased = data.user.courses.find(
+      const isPurchased = data?.user?.courses.find(
         (item: any) => item._id === id
       );
       if (!isPurchased) {

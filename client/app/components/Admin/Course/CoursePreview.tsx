@@ -55,10 +55,10 @@ const CoursePreview: FC<Props> = ({
           </h4>
         </div>
 
-        {/* but now button  */}
+        {/* buy now button  */}
         <div className="flex items-center">
           <div
-            className={`${styles.btnOnly} !w-[180px] my-3 font-Poppins !bg-[crimson] cursor-not-allowed`}
+            className={`${styles.btnVideo} !w-[180px] my-3 font-Poppins !bg-[crimson] cursor-not-allowed`}
           >
             Buy Now ${courseData?.price}
           </div>

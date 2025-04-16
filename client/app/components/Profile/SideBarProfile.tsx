@@ -64,7 +64,7 @@ const SideBarProfile: FC<Props> = ({
       <div
         className={`w-full flex items-center font-medium px-3 py-4 cursor-pointer ${
           active === 2
-            ? "bg-[#bb8add] text-black rounded-md "
+            ? "bg-[#bb8add] text-black rounded-md"
             : "bg-transparent text-black"
         }`}
         onClick={() => setActive(2)}

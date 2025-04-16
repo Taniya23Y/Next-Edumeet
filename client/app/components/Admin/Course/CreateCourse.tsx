@@ -13,12 +13,15 @@ import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
 const CreateCourse = () => {
-  const [createCourse, { isLoading, isSuccess, error }] =
+  // const [createCourse, { isLoading, isSuccess, error }] =
+  const [createCourse, { isLoading, data, isSuccess, error }] =
     useCreateCourseMutation();
 
   useEffect(() => {
     if (isSuccess) {
-      toast.success("Course created successfully!");
+      const message = data?.message || "course created successfully";
+      // toast.success("Course created successfully!");
+      toast.success(message);
       redirect("/admin/courses");
     }
     if (error) {
@@ -27,7 +30,7 @@ const CreateCourse = () => {
         toast.error(errorMessage.data.message);
       }
     }
-  }, [isLoading, isSuccess, error]);
+  }, [isLoading, isSuccess, error, data]);
 
   const [active, setActive] = useState(0);
   const [courseInfo, setCourseInfo] = useState({
@@ -87,6 +90,7 @@ const CreateCourse = () => {
     const data = {
       name: courseInfo.name,
       description: courseInfo.description,
+      categories: courseInfo.categories,
       price: courseInfo.price,
       estimatedPrice: courseInfo.estimatedPrice,
       tags: courseInfo.tags,
@@ -150,6 +154,7 @@ const CreateCourse = () => {
             setActive={setActive}
             courseData={courseData}
             handleCourseCreate={handleCourseCreate}
+            isEdit={false}
           />
         )}
       </div>

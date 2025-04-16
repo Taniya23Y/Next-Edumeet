@@ -64,7 +64,6 @@ courseRouter.put(
 );
 courseRouter.put(
   "/add-reply-review",
-  updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   addReplyToReview

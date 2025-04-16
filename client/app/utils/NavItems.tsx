@@ -26,15 +26,15 @@ import { IoBookOutline } from "react-icons/io5";
 
 export const navItemsData = [
   { id: 1, icon: <Home size={14} />, label: "Home", url: "/" },
-  { id: 2, icon: <LayoutPanelTop size={15} />, label: "Catelog" }, // Dropdown
   {
-    id: 3,
+    id: 2,
     icon: <IoBookOutline size={14} />,
     label: "Course",
     url: "/courses",
   },
-  { id: 3, icon: <UserRound size={14} />, label: "About us", url: "/about" },
-  // { id: 4, icon: <NotebookText size={14} />, label: "Blog", url: "/blog" },
+  { id: 3, icon: <LayoutPanelTop size={15} />, label: "Catelog" }, // Dropdown
+  { id: 4, icon: <UserRound size={14} />, label: "About us", url: "/about" },
+  // { id: 5, icon: <NotebookText size={14} />, label: "Blog", url: "/blog" },
   { id: 5, icon: <Contact size={14} />, label: "Contact us", url: "/contact" },
 ];
 

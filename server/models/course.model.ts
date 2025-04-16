@@ -1,7 +1,8 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 import { IUser } from "./user.model";
 
-interface IComment extends Document {
+// interface IComment extends Document {
+export interface IComment extends Document {
   user: IUser;
   question: string;
   questionReplies?: IComment[];
@@ -9,9 +10,11 @@ interface IComment extends Document {
 
 interface IReview extends Document {
   user: IUser;
-  rating: number;
+  // rating: number;
+  rating?: number;
   comment: string;
-  commentReplies?: IComment[];
+  // commentReplies?: IComment[];
+  commentReplies?: IReview[];
 }
 
 interface ILink extends Document {
@@ -38,7 +41,11 @@ export interface ICourse extends Document {
   categories: string;
   price: number;
   estimatedPrice?: number;
-  thumbnail: object;
+  // thumbnail: object;
+  thumbnail: {
+    public_id: string;
+    url: string;
+  };
   tags: string;
   level: string;
   demoUrl: string;

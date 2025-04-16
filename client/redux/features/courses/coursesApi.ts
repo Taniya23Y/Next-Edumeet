@@ -102,7 +102,7 @@ export const courseApi = apiSlice.injectEndpoints({
 
     addReplyInReview: builder.mutation({
       query: ({ comment, courseId, reviewId }) => ({
-        url: "/add-reply",
+        url: "/add-reply-review",
         method: "PUT",
         body: {
           comment,
