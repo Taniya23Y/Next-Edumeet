@@ -70,7 +70,7 @@ const socialLinks = [
   {
     id: 4,
     icon: <FaLinkedin size={21} />,
-    url: "https://www.linkedin.com/taniay",
+    url: "https://www.linkedin.com/in/taniyay/",
   },
 ];
 
