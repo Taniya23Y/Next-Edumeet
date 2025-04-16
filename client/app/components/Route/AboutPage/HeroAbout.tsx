@@ -32,7 +32,7 @@ const HeroAbout: React.FC<HeroAboutProps> = ({ ctabtn1 }) => {
   return (
     <div className="w-full relative flex justify-center pt-[2rem]">
       <div
-        className="w-full max-w-7xl relative about about-bg rounded-xl shadow-2xl backdrop-blur-lg bg-opacity-80"
+        className="w-full max-w-7xl relative abouts abouts-bg rounded-xl shadow-2xl backdrop-blur-lg bg-opacity-80"
         style={{
           background:
             "linear-gradient(129.77deg, #8a2be2 -6.46%, #ffa500 60.04%, #f8f8ff 124.53%)",
