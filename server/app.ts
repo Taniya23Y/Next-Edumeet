@@ -12,20 +12,21 @@ import analyticsRouter from "./routes/analytics.route";
 import layoutRouter from "./routes/layout.route";
 import { rateLimit } from "express-rate-limit";
 
-// cookie-parser
-app.use(cookieParser());
-
 // body parser
 app.use(express.json({ limit: "50mb" }));
 
+// cookie-parser
+app.use(cookieParser());
+
 // cors => cross origin resource sharing
+const allowedOrigins = [
+  "https://edumeet-learn.vercel.app",
+  "http://localhost:3000", // optional for local dev
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://edumeet-learn.vercel.app",
-    ],
+    origin: allowedOrigins,
     credentials: true,
   })
 );
@@ -33,15 +34,18 @@ app.use(
 // api request limit
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per `window` (here, per 15 minutes)
+  limit: 100, // limit each IP to 100 requests per `window` (here, per 15 minutes)
   standardHeaders: "draft-7", // drafts-6: RateLimit-* headers; drafts-7: combined RateLimit header
   legacyHeaders: false, // X-RateLimit-* headers
   // store: .... // use an external store for more precise rate limiting
 });
 
 // Routes
-app.get("/", (req: Request, res: Response) => {
-  res.send("EduMeet Backend is Live 🚀");
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json({
+    success: true,
+    message: "EduMeet Backend is Live 🚀",
+  });
 });
 
 // app.use("/api/v1", userRouter, courseRouter, orderRouter, notificationRoute, analyticsRouter, layoutRouter);
