@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "es2020",
     "module": "commonjs",
-    "rootDir": "../server",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
     "outDir": "./build",
-    "typeRoots": ["./node_modules/@types"],
-    "strict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "skipLibCheck": true
+    // "target": "ES2020",
+    // "module": "commonjs",
+    // "rootDir": "../server",
+    // "moduleResolution": "node",
+    // "esModuleInterop": true,
+    // "allowSyntheticDefaultImports": true,
+    // "resolveJsonModule": true,
+    // "outDir": "./build",
+    // "typeRoots": ["./node_modules/@types"],
+    // "strict": true,
+    // "forceConsistentCasingInFileNames": true,
+    // "skipLibCheck": true
   }
 }

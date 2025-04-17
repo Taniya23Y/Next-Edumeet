@@ -35,7 +35,11 @@ const limiter = rateLimit({
   // store: .... // use an external store for more precise rate limiting
 });
 
-// routes
+// Routes
+app.get("/", (req: Request, res: Response) => {
+  res.send("EduMeet Backend is Live 🚀");
+});
+
 // app.use("/api/v1", userRouter, courseRouter, orderRouter, notificationRoute, analyticsRouter, layoutRouter);
 app.use("/api/v1", userRouter);
 app.use("/api/v1", courseRouter);
