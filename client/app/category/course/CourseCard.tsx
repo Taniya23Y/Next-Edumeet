@@ -22,7 +22,7 @@ const CourseCard: FC<Props> = ({ item, isProfile }) => {
         {/* Course Thumbnail */}
         <div className="relative w-full h-[180px] rounded-lg overflow-hidden">
           <Image
-            src={item.thumbnail.url}
+            src={item?.thumbnail?.url}
             width={500}
             height={300}
             className="rounded-md object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
