@@ -2,7 +2,9 @@
 
 Welcome to **EduMeet**! 🎉
 
-EduMeet streamlines access to free coding courses from YouTube and other platforms, offering structured roadmaps and tailored assignments. Users can explore diverse topics based on their interests and skill levels, with easy redirection to original content. It simplifies the journey of discovering and accessing coding resources, empowering learners for efficient skill advancement 🚀
+## 🚀 Edumeet – Course Management Platform
+
+**Tech Stack:** `Next.js` ⚛️ | `Express` 🚂 | `Node.js` 🟢 | `MongoDB` 🍃 | `TypeScript` 🟦 | `Redis` ⚡ | `Cloudinary` ☁️ | `JWT` 🔐 | `EJS` 🧩
 
 <div align="center">
   <br />
@@ -11,6 +13,40 @@ EduMeet streamlines access to free coding courses from YouTube and other platfor
   <br />
 </div>
 
+---
+
+- 📚 **Edumeet** is a full-featured online course management platform built to provide a seamless learning experience for users and a robust admin interface for managing the platform efficiently.
+
+- 🎥 Users can **browse**, **buy**, and **watch** video courses directly on the platform. After completing a course, they can leave ⭐ **reviews** and ratings to help others make informed decisions.
+
+- ❓💬 A dedicated **Q&A section** allows students to raise doubts and answer peer questions, creating a collaborative learning space that encourages interaction and engagement.
+
+- 🛠️ The **admin panel** is packed with powerful tools:
+  - 📦 **Course Management**: Create, preview, update (live), and delete courses.
+  - 👥 **User Management**: Add, remove, or edit users with role-based control.
+  - ⚙️ **Team Management**: Admins can manage internal team members and their permissions.
+  - ✨ **Dynamic Customization**: Update FAQs, hero banners, and testimonials in real-time from the dashboard.
+
+- 📊 **Analytics Dashboard**: Track user activity, monitor course performance, and visualize order statistics with detailed insights to help optimize platform growth and engagement.
+
+- 🧾 **Order & Invoice Handling**: Admins can view all orders and generate invoices automatically, with real-time 💬 notifications for new purchases and user activities.
+
+- ⚡ **Redis**: It is used for high-performance session handling and caching, resulting in faster load times and an optimized user experience.
+
+- 🍃 **MongoDB**: It is used for efficient, flexible, and scalable data storage, supporting all user, course, and transaction-related operations.
+
+- ☁️ **Cloudinary**: It powers the media handling for course thumbnails, previews, and user profile pictures.
+
+- 🔐 **JWT Authentication**: It ensures secure login and user session management.
+
+- 🔒 Built with **TypeScript** for type safety and EJS for clean, server-side dynamic rendering — ensuring a smooth and responsive interface across all devices.
+
+---
+
+> 💻 **Edumeet** is a complete full-stack solution that highlights my skills in scalable web development, intuitive UI/UX, and backend management. From learner engagement to admin-level control, this platform is designed for performance, reliability, and extensibility. 
+> 
+---
+
 ## 🌟 Features
 
 - 📚 **Structured Roadmaps**: Organized learning paths to guide you through various coding topics.
@@ -18,17 +54,6 @@ EduMeet streamlines access to free coding courses from YouTube and other platfor
 - 🔍 **Diverse Topics**: Explore a wide range of subjects based on your interests and skill levels.
 - 🔗 **Easy Redirection**: Seamlessly access original content on platforms like YouTube.
 - 💡 **Efficient Skill Advancement**: Empowering you to efficiently advance your coding skills.
-
-## 🚀 Tech Stack
-
-EduMeet is built with the following technologies:
-
-- **Frontend**: [React](https://reactjs.org/) ⚛️
-- **Backend**: [Express](https://expressjs.com/) 🚂
-- **Database**: [MongoDB](https://www.mongodb.com/) 🍃
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) 🎨
-- **API**: Integrations for fetching and organizing content from various platforms. 🌐
-- **Responsive Design**: Optimized for seamless experiences on all devices. 📱💻
 
 ## 📑 Table of Contents
 
@@ -45,7 +70,7 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/edumeet.git
+   git clone https://github.com/your-username/next-edumeet.git
    cd edumeet
    ```
 2. **Install Dependencies:**:
