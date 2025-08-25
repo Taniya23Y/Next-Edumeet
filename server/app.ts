@@ -22,7 +22,6 @@ app.use(cookieParser());
 // cors => cross origin resource sharing
 const allowedOrigins = [
   "https://edumeet-learn.vercel.app",
-  "https://next-edumeet.onrender.com",
   "http://localhost:3000", // optional for local dev
 ];
 
