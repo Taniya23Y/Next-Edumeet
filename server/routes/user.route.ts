@@ -22,34 +22,34 @@ userRouter.post("/registration", registrationUser);
 userRouter.post("/activate-user", activateUser);
 userRouter.post("/login", loginUser);
 
-userRouter.get("/logout", updateAccessToken, isAuthenticated, logoutUser);
-userRouter.get("/refresh", updateAccessToken);
-userRouter.get("/me", updateAccessToken, isAuthenticated, getUserInfo);
+userRouter.get("/logout", isAuthenticated, logoutUser);
+// userRouter.get("/refresh", updateAccessToken);
+userRouter.get("/me", isAuthenticated, getUserInfo);
 
 userRouter.post("/social-auth", socialAuth);
 
 userRouter.put(
   "/update-user-info",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   updateUserInfo
 );
 userRouter.put(
   "/update-user-password",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   updatePassword
 );
 userRouter.put(
   "/update-user-avatar",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   updateProfilePicture
 );
 
 userRouter.get(
   "/get-users",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   getAllUsers
@@ -57,7 +57,7 @@ userRouter.get(
 
 userRouter.put(
   "/update-user",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   updateUserRole
@@ -65,7 +65,7 @@ userRouter.put(
 
 userRouter.delete(
   "/delete-user/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   deleteUser

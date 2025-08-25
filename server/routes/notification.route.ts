@@ -9,7 +9,7 @@ const notificationRoute = express.Router();
 
 notificationRoute.get(
   "/get-all-notifications",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   getNotifications
@@ -17,7 +17,7 @@ notificationRoute.get(
 
 notificationRoute.put(
   "/update-notification/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   updateNotification

@@ -10,18 +10,18 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     refreshToken: builder.query({
       query: (data) => ({
-        url: "refresh",
+        url: "/refresh",
         method: "GET",
         credentials: "include" as const,
       }),
     }),
     loadUser: builder.query({
       query: (data) => ({
-        url: "me",
+        url: "/me",
         method: "GET",
         credentials: "include" as const,
       }),
-      async onQueryStarted(args, { queryFulfilled, dispatch }) {
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
           dispatch(

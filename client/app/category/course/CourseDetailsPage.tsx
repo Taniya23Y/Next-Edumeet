@@ -46,20 +46,6 @@ const CourseDetailsPage = ({ id }: Props) => {
       setStripePromise(loadStripe(testKey));
       if (data) fetchPaymentIntent();
     }
-
-    // if (config?.publishableKey) {
-    //   setStripePromise(loadStripe(config.publishableKey));
-    //   fetchPaymentIntent();
-    // }
-
-    // if (config) {
-    //   const publishablekey = config?.publishableKey;
-    //   setStripePromise(loadStripe(publishablekey));
-    // }
-    // if (data) {
-    //   const amount = Math.round(data?.course.price * 100);
-    //   createPaymentIntent(amount);
-    // }
   }, [data, createPaymentIntent]);
 
   useEffect(() => {
@@ -75,7 +61,7 @@ const CourseDetailsPage = ({ id }: Props) => {
       ) : (
         <div>
           <Heading
-            title={data.course.name + " - Edumeet"}
+            title={data?.course?.name + " - Edumeet"}
             description="EduMeet organizes structured coding courses from YouTube and other resources, providing clear roadmaps and tailored assignments for efficient learning. 🚀"
             keywords={data?.course?.tags}
           />

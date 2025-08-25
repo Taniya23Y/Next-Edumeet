@@ -220,7 +220,7 @@ export const updateAccessToken = catchAsyncError(
       const accessToken = jwt.sign(
         { id: user._id },
         process.env.ACCESS_TOKEN as string,
-        { expiresIn: "5m" }
+        { expiresIn: "10m" }
       );
 
       const refreshToken = jwt.sign(
@@ -236,12 +236,12 @@ export const updateAccessToken = catchAsyncError(
 
       await redis.set(user._id, JSON.stringify(user), "EX", 604800); // (604800)it means => 7days
 
-      // res.status(200).json({
-      //   success: "success",
-      //   accessToken,
-      // });
+      res.status(200).json({
+        success: "success",
+        accessToken,
+      });
 
-      next();
+      // return next();
     } catch (error: any) {
       return next(new ErrorHandler(error.message, 400));
     }

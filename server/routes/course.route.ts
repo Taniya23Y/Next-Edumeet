@@ -19,7 +19,7 @@ const courseRouter = express.Router();
 
 courseRouter.post(
   "/create-course",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   uploadCourse
@@ -37,7 +37,7 @@ courseRouter.get("/get-course/:id", getSingleCourse);
 courseRouter.get("/get-courses", getAllCourses);
 courseRouter.get(
   "/get-admin-courses",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   getAdminAllCourses
@@ -51,14 +51,14 @@ courseRouter.get(
 
 courseRouter.put(
   "/add-question",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   addQuestion
 );
-courseRouter.put("/add-answer", updateAccessToken, isAuthenticated, addAnswer);
+courseRouter.put("/add-answer", isAuthenticated, addAnswer);
 courseRouter.put(
   "/add-review/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   addReview
 );
@@ -80,7 +80,7 @@ courseRouter.post("/getVdoCipherOTP", generateVideoUrl);
 
 courseRouter.delete(
   "/delete-course/:id",
-  updateAccessToken,
+  // updateAccessToken,
   isAuthenticated,
   authorizeRoles("admin"),
   deleteCourse

@@ -22,19 +22,25 @@ const refreshTokenExpire = parseInt(
   10
 );
 
+const isProd = process.env.NODE_ENV === "production";
+
 // options for cookies
 export const accessTokenOptions: ITokenOptions = {
-  expires: new Date(Date.now() + accessTokenExpire * 60 * 60 * 1000),
-  maxAge: accessTokenExpire * 60 * 60 * 1000,
+  // expires: new Date(Date.now() + accessTokenExpire * 60 * 60 * 1000),
+  expires: new Date(Date.now() + 5 * 60 * 1000), // 5 min
+  // maxAge: accessTokenExpire * 60 * 60 * 1000,
+  maxAge: 5 * 60 * 1000,
   httpOnly: true,
-  sameSite: "lax",
+  sameSite: isProd ? "none" : "lax",
+  secure: isProd,
 };
 
 export const refreshTokenOptions: ITokenOptions = {
   expires: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000),
   maxAge: refreshTokenExpire * 24 * 60 * 60 * 1000,
   httpOnly: true,
-  sameSite: "lax",
+  sameSite: isProd ? "none" : "lax",
+  secure: isProd,
 };
 
 export const sendToken = (user: IUser, statusCode: number, res: Response) => {
@@ -45,9 +51,27 @@ export const sendToken = (user: IUser, statusCode: number, res: Response) => {
   redis.set(user._id as string, JSON.stringify(user) as any);
 
   // only set secure to true in production
-  if (process.env.NODE_ENV === "production") {
-    accessTokenOptions.secure = true;
-  }
+  // if (process.env.NODE_ENV === "production") {
+  //   accessTokenOptions.secure = true;
+  // }
+
+  const isProd = process.env.NODE_ENV === "production";
+
+  const accessTokenOptions: ITokenOptions = {
+    expires: new Date(Date.now() + 5 * 60 * 1000), // 5 minutes
+    maxAge: 5 * 60 * 1000,
+    httpOnly: true,
+    sameSite: isProd ? "none" : "lax",
+    secure: isProd,
+  };
+
+  const refreshTokenOptions: ITokenOptions = {
+    expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), // 3 days
+    maxAge: 3 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+    sameSite: isProd ? "none" : "lax",
+    secure: isProd,
+  };
 
   res.cookie("access_token", accessToken, accessTokenOptions);
   res.cookie("refresh_token", refreshToken, refreshTokenOptions);
